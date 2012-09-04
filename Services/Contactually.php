@@ -25,14 +25,14 @@ class Services_Contactually
     {
         $this->cookie_path = getcwd() . '/cookie.txt';
         $this->sub_resources = array(
-            'accounts',
-            'buckets',
-            'contact_histories',
-            'contacts',
-            'followups',
-            'notes',
-            'tasks',
-            'users'
+            'accounts' => 'accounts',
+            'buckets' => 'buckets',
+            'contact_histories' => 'contact_histories',
+            'contacts' => 'contacts',
+            'followups' => 'followups',
+            'notes' => 'notes',
+            'tasks' => 'tasks',
+            'users' => 'users'
         );
 
         /*
@@ -79,18 +79,15 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
         return json_decode($response);        
     }
 
-    public function getContacts($limit = 10)
+    public function __call($name, $arguments)
     {
-        $contacts_uri = 'https://www.contactually.com/api/v1/contacts.json';
-        $contacts_uri .= '?limit=' . (int) $limit;
-
-        return $this->execute($contacts_uri);
-    }
-    
-    public function getAccounts()
-    {
-        $accounts_url = 'https://www.contactually.com/api/v1/accounts.json';
-
-        return $this->execute($accounts_url);
+        if(isset($this->sub_resources[$name])) {
+            $target_uri = "https://www.contactually.com/api/v1/$name.json";
+            
+            return $this->execute($target_uri, $arguments);
+        } else {
+            echo "nope, didn't work";
+            throw new Exception("Method not found", 405);
+        }
     }
 }

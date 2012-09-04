@@ -8,15 +8,5 @@ $service = new Services_Contactually(
             array('email' => $email, 'password' => $password)
         );
 
-print_r($service);
-
-$contacts = $service->getContacts();
-print_r($contacts);
-
-//$accounts = $service->getAccounts();
-
-//print_r($accounts);
-//
-//$data = json_decode($accounts, true);
-//
-//print_r($data);
+$results = $service->contacts();
+print_r($results);
