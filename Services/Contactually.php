@@ -1,7 +1,7 @@
 <?php
 
 function Services_Contactually_autoload($className) {
-    if (substr($className, 0, 15) != 'Services_Contactually') {
+    if (substr($className, 0, 21) != 'Services_Contactually') {
         return false;
     }
     $file = str_replace('_', '/', $className);
@@ -25,14 +25,14 @@ class Services_Contactually
     {
         $this->cookie_path = getcwd() . '/cookie.txt';
         $this->sub_resources = array(
-            'accounts' => 'accounts',
-            'buckets' => 'buckets',
-            'contact_histories' => 'contact_histories',
-            'contacts' => 'contacts',
-            'followups' => 'followups',
-            'notes' => 'notes',
-            'tasks' => 'tasks',
-            'users' => 'users'
+            'accounts' => 'Account',
+            'buckets' => 'Bucket',
+            'contact_histories' => 'ContactHistory',
+            'contacts' => 'Contact',
+            'followups' => 'Followup',
+            'notes' => 'Note',
+            'tasks' => 'Task',
+            'users' => 'User'
         );
 
         /*
@@ -79,12 +79,35 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
         return json_decode($response);        
     }
 
+    /**
+     * This handles all the GET index actions for all of the resources. In addition,
+     *    it takes the JSON return data and converts it to an array of objects
+     *    already cast to a class corresponding to our Resource classes.
+     * 
+     * I'm not usually a fan of the pseudo-code crap using the 'new $classname()'
+     *    sort of stuff but it works quite nicely here..
+     * 
+     * @param type $name - name of the resource we're retrieving
+     * @param type $arguments - filters, etc that we want
+     * 
+     * @return stdClass 
+     */
     public function __call($name, $arguments)
     {
         if(isset($this->sub_resources[$name])) {
             $target_uri = "https://www.contactually.com/api/v1/$name.json";
-            
-            return $this->execute($target_uri, $arguments);
+            $myObject = $this->execute($target_uri, $arguments);
+
+            $classname = 'Services_Contactually_'.$this->sub_resources[$name];
+            $newObject = new $classname();
+
+            $dataSet = $myObject->$name;
+            foreach($dataSet as $key => $values) {
+                $dataSet[$key] = $newObject->bind($values);
+            }
+            $myObject->$name = $dataSet;
+
+            return $myObject;
         } else {
             echo "nope, didn't work";
             throw new Exception("Method not found", 405);
