@@ -42,9 +42,15 @@ abstract class Services_Contactually_Base
                     $newObject = clone $this;
                     $dataSet[$key] = $newObject->bind($values);
                 }
-                //$myObject->{$this->name} = $dataSet;
-                
                 return $dataSet;
+
+                break;
+            case 'show':
+                $id = $arguments[0];
+                $this->show = str_replace('<id>', $id, $this->show);
+                $myObject = $this->service->get("{$this->show}", $id);
+                
+                return $this->bind($myObject);
                 break;
             default:
                 echo "nope, didn't work";
