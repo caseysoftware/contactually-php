@@ -14,7 +14,6 @@ spl_autoload_register('Services_Contactually_autoload');
 class Services_Contactually
 {
     protected $connection = null;
-    protected $auth_url   = 'https://www.contactually.com/users/sign_in.json';
     protected $cookie_path = '';
     protected $sub_resources = array();
 
@@ -36,6 +35,21 @@ class Services_Contactually
             'users'
         );
 
+        /*
+         * I'm not a fan of this hack, but it seemed the most appropriate for the
+         *    time being to keep the rest of the param processing for the API calls the same.
+         */
+        foreach($params as $param => $value) {
+            unset($params[$param]);
+            $params["user[$param]"] = $value;
+        }
+        $auth_url = 'https://www.contactually.com/users/sign_in.json';
+
+        $this->execute($auth_url, $params);
+    }
+
+    public function execute($uri, $params = array())
+    {
         $fields = '';
         foreach($params as $param => $value) {
             $fields .= "&user[$param]=".urlencode($value);
@@ -46,59 +60,37 @@ class Services_Contactually
         curl_setopt($connection, CURLOPT_RETURNTRANSFER, TRUE);
 
         //set the url, number of POST vars, POST data
-        curl_setopt($connection,CURLOPT_URL, $this->auth_url);
+        curl_setopt($connection,CURLOPT_URL, $uri);
         curl_setopt($connection,CURLOPT_POST, count($params));
-//curl_setopt($connection,CURLOPT_HEADER, true);
-curl_setopt($connection, CURLOPT_COOKIEJAR, $this->cookie_path);
+
+        /* This handles the cookie-based auth. Will need refactoring later. */
+        curl_setopt($connection, CURLOPT_COOKIEJAR, $this->cookie_path);
+        curl_setopt($connection, CURLOPT_COOKIEFILE, $this->cookie_path); //saved cookies
+//TODO:  We need to add certificate validation. I've disabled it for now.
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
-
-//TODO: get the ssl cert
-//curl_setopt($connection, CURLOPT_COOKIEFILE, $this->cookie_path); //saved cookies
-//curl_setopt($connection, CURLOPT_VERBOSE, true);
-        curl_setopt($connection,CURLOPT_POSTFIELDS, $fields);
-
         //execute post
         $response = curl_exec($connection);
 
+//TODO:  We have the response code, we should probably do something with it.
+        $status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
+
         curl_close($connection);
+
+        return json_decode($response);        
     }
 
     public function getContacts($limit = 10)
     {
-        $contacts_url = 'https://www.contactually.com/api/v1/contacts.json';
-        $contacts_url .= '?limit=' . (int) $limit;
-        
-        //open connection
-        $connection = curl_init();
-        curl_setopt($connection, CURLOPT_RETURNTRANSFER, TRUE);
+        $contacts_uri = 'https://www.contactually.com/api/v1/contacts.json';
+        $contacts_uri .= '?limit=' . (int) $limit;
 
-        //set the url, number of POST vars, POST data
-        curl_setopt($connection,CURLOPT_URL, $contacts_url);
-        curl_setopt($connection, CURLOPT_COOKIEFILE, $this->cookie_path); //saved cookies
-curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
-        //execute post
-        $response = curl_exec($connection);
-$status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-echo "x- $status -x \n";
-        return json_decode($response);
+        return $this->execute($contacts_uri);
     }
     
     public function getAccounts()
     {
         $accounts_url = 'https://www.contactually.com/api/v1/accounts.json';
-        
-        //open connection
-        $connection = curl_init();
-        curl_setopt($connection, CURLOPT_RETURNTRANSFER, TRUE);
 
-        //set the url, number of POST vars, POST data
-        curl_setopt($connection,CURLOPT_URL, $accounts_url);
-        curl_setopt($connection, CURLOPT_COOKIEFILE, $this->cookie_path); //saved cookies
-curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
-        //execute post
-        $response = curl_exec($connection);
-$status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-echo "x- $status -x \n";
-        return json_decode($response);
+        return $this->execute($accounts_url);
     }
 }
