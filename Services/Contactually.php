@@ -45,38 +45,58 @@ class Services_Contactually
         }
         $auth_url = 'https://www.contactually.com/users/sign_in.json';
 
-        $this->execute($auth_url, $params);
+        $this->_post($auth_url, $params);
     }
 
-    public function execute($uri, $params = array())
+    protected function _post($uri, $params = array())
     {
-        $fields = '';
-        foreach($params as $param => $value) {
-            $fields .= "&user[$param]=".urlencode($value);
-        }
+        $curl_opts = array(
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => $uri,
+            CURLOPT_POST => count($params),
+            CURLOPT_POSTFIELDS => $params,
+/* TODO: This handles the cookie-based auth. Will need refactoring later. */
+            CURLOPT_COOKIEJAR => $this->cookie_path,
+            CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
+        );
+        
+        return $this->_execute($curl_opts);
+    }
+
+    protected function _get($uri, $params = array())
+    {
+        $uri .= '?'.http_build_query($params);
+
+        $curl_opts = array(
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_URL => $uri,
+            CURLOPT_COOKIEFILE => $this->cookie_path,
+            
+        );
+
+        return $this->_execute($curl_opts);
+    }
+
+    protected function _execute($curl_params = array())
+    {
 
         //open connection
         $connection = curl_init();
-        curl_setopt($connection, CURLOPT_RETURNTRANSFER, TRUE);
-
-        //set the url, number of POST vars, POST data
-        curl_setopt($connection,CURLOPT_URL, $uri);
-        curl_setopt($connection,CURLOPT_POST, count($params));
-
-        /* This handles the cookie-based auth. Will need refactoring later. */
-        curl_setopt($connection, CURLOPT_COOKIEJAR, $this->cookie_path);
-        curl_setopt($connection, CURLOPT_COOKIEFILE, $this->cookie_path); //saved cookies
+        foreach($curl_params as $option => $value) {
+            curl_setopt($connection, $option, $value);
+        }
 //TODO:  We need to add certificate validation. I've disabled it for now.
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
-        //execute post
+
+        //execute request
         $response = curl_exec($connection);
 
 //TODO:  We have the response code, we should probably do something with it.
-        $status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
+        $this->status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
 
         curl_close($connection);
 
-        return json_decode($response);        
+        return json_decode($response);
     }
 
     /**
@@ -96,7 +116,7 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
     {
         if(isset($this->sub_resources[$name])) {
             $target_uri = "https://www.contactually.com/api/v1/$name.json";
-            $myObject = $this->execute($target_uri, $arguments);
+            $myObject = $this->_get($target_uri, $arguments[0]);
 
             $classname = 'Services_Contactually_'.$this->sub_resources[$name];
 
