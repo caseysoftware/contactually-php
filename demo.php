@@ -8,5 +8,9 @@ $service = new Services_Contactually(
             array('email' => $email, 'password' => $password)
         );
 
-$results = $service->contacts();
+$results = $service->contacts(array('limit' => 10));
 print_r($results);
+
+//$contact = new Services_Contactually_Contact();
+//$contact->show(14184603);
+//print_r($contact);
