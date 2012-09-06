@@ -35,27 +35,35 @@ abstract class Services_Contactually_Base
     public function __call($name, $arguments)
     {
         switch($name) {
-            case 'index':
-                $myObject = $this->service->get($this->index, $arguments[0]);
-                $dataSet = $myObject->{$this->name};
-
-                foreach($dataSet as $key => $values) {
-                    $newObject = clone $this;
-                    $dataSet[$key] = $newObject->bind($values);
-                }
-                return $dataSet;
-
-                break;
-            case 'show':
-                $id = $arguments[0];
-                $this->show = str_replace('<id>', $id, $this->show);
-                $myObject = $this->service->get("{$this->show}", array('id' => $id));
-                
-                return $this->bind($myObject);
-                break;
             default:
                 echo "nope, didn't work";
                 throw new Exception("Method not found", 405);
         }
+    }
+
+    public function index($params = array())
+    {
+        $myObject = $this->service->get($this->index, $params);
+//TODO: This is a nasty hack because of the inconsistent property names :(
+$property_name = $this->name;
+$property_name = ('buckets' == $property_name) ? 'user_buckets' : $property_name;
+$property_name = ('contact_histories' == $property_name) ? 'email_histories' : $property_name;
+$property_name = ('followups' == $property_name) ? 'today' : $property_name;
+
+        $dataSet = $myObject->{$property_name};
+
+        foreach($dataSet as $key => $values) {
+            $newObject = clone $this;
+            $dataSet[$key] = $newObject->bind($values);
+        }
+        return $dataSet;
+    }
+
+    public function show($id = 0)
+    {
+        $this->show = str_replace('<id>', $id, $this->show);
+        $myObject = $this->service->get("{$this->show}", array('id' => $id));
+
+        return $this->bind($myObject);
     }
 }
