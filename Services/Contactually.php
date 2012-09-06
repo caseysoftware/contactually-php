@@ -35,8 +35,9 @@ class Services_Contactually
         $this->cookie_path = getcwd() . '/cookie.txt';
 
         /*
-         * I'm not a fan of this hack, but it seemed the most appropriate for the
-         *    time being to keep the rest of the param processing for the API calls the same.
+         * TODO: I'm not a fan of this hack, but it seemed the most appropriate
+         *    for the time being to keep the rest of the param processing for the
+         *    API calls the same.
          */
         foreach($params as $param => $value) {
             unset($params[$param]);
@@ -82,7 +83,7 @@ class Services_Contactually
 
     public function get($uri, $params = array())
     {
-        $uri .= '?'.http_build_query($params);
+        $uri .= (count($params)) ? '?'.http_build_query($params) : '';
 
         $curl_opts = array(
             CURLOPT_RETURNTRANSFER => true,
