@@ -14,6 +14,7 @@ spl_autoload_register('Services_Contactually_autoload');
 class Services_Contactually
 {
     protected $cookie_path = '';
+//TODO: I don't like having to enumerate these up front. The library should allow the API to inform on available resources.
     protected $sub_resources = array(
                     'accounts' => 'Account',
                     'buckets' => 'Bucket',
@@ -45,6 +46,7 @@ class Services_Contactually
 
         $this->post($auth_url, $params);
 
+//TODO: I really don't like how this is structured.. why bother declaring all of these subresources/classes if I don't need them?
         foreach($this->sub_resources as $obj => $class) {
             $classname = 'Services_Contactually_'.$class;
             $this->$obj = new $classname($this);

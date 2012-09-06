@@ -31,6 +31,7 @@ abstract class Services_Contactually_Base
      * 
      * @return stdClass 
      */
+//TODO: break this into separate methods
     public function __call($name, $arguments)
     {
         switch($name) {
