@@ -45,12 +45,24 @@ class Services_Contactually
         $auth_url = 'https://www.contactually.com/users/sign_in.json';
 
         $this->post($auth_url, $params);
+    }
 
-//TODO: I really don't like how this is structured.. why bother declaring all of these subresources/classes if I don't need them?
-        foreach($this->sub_resources as $obj => $class) {
+    /*
+     * Shifted creating all the Subresouces from in the constructor to creating
+     *    them as needed.
+     * 
+     */
+    public function __get($name)
+    {
+        $this->$name = null;
+
+        if (isset($this->sub_resources[$name])) {
+            $class = $this->sub_resources[$name];
             $classname = 'Services_Contactually_'.$class;
-            $this->$obj = new $classname($this);
+            $this->$name = new $classname($this);
         }
+
+        return $this->$name;
     }
 
     public function post($uri, $params = array())

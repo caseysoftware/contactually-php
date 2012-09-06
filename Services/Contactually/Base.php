@@ -49,7 +49,7 @@ abstract class Services_Contactually_Base
             case 'show':
                 $id = $arguments[0];
                 $this->show = str_replace('<id>', $id, $this->show);
-                $myObject = $this->service->get("{$this->show}", $id);
+                $myObject = $this->service->get("{$this->show}", array('id' => $id));
                 
                 return $this->bind($myObject);
                 break;
