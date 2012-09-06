@@ -66,4 +66,9 @@ $property_name = ('followups' == $property_name) ? 'today' : $property_name;
 
         return $this->bind($myObject);
     }
+
+    public function create($params = array())
+    {
+        
+    }
 }
