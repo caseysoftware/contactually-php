@@ -3,6 +3,9 @@
 abstract class Services_Contactually_Base
 {
     protected $service = null;
+
+    protected $index = 'https://www.contactually.com/api/v1/<resource>.json';
+    protected $show  = 'https://www.contactually.com/api/v1/<resource>/<id>.json';
     
     public function __construct(Services_Contactually $service)
     {
@@ -43,7 +46,8 @@ abstract class Services_Contactually_Base
 
     public function index($params = array())
     {
-        $myObject = $this->service->get($this->index, $params);
+        $this->index = str_replace('<resource>', $this->name, $this->index);
+
 //TODO: This is a nasty hack because of the inconsistent property names :(
 $property_name = $this->name;
 $property_name = ('buckets' == $property_name) ? 'user_buckets' : $property_name;
