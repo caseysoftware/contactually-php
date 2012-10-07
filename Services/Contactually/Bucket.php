@@ -2,5 +2,6 @@
 
 class Services_Contactually_Bucket extends Services_Contactually_Base
 {
-    protected $name  = 'buckets';
+    protected $name     = 'bucket';
+    protected $resource = 'buckets';
 }

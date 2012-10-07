@@ -2,5 +2,6 @@
 
 class Services_Contactually_Account extends Services_Contactually_Base
 {
-    protected $name  = 'accounts';
+    protected $name     = 'account';
+    protected $resource = 'accounts';
 }
