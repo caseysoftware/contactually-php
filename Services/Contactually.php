@@ -68,12 +68,12 @@ class Services_Contactually
         return $this->$name;
     }
 
-    public function post($uri, $params = array())
+    public function post($uri, $params)
     {
         $curl_opts = array(
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_URL => $uri,
-            CURLOPT_POST => count($params),
+            CURLOPT_POST => 1,
             CURLOPT_POSTFIELDS => $params,
 /* TODO: This handles the cookie-based auth. Will need refactoring later. */
             CURLOPT_COOKIEJAR => $this->cookie_path,
