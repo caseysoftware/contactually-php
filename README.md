@@ -7,6 +7,20 @@ It is modeled after the Twilio PHP Helper library because I think it's generally
 
 This is v0.01 so it is super rudiment and subject to change at any time.. like now. Or maybe now.
 
+*  Implement discover, index, and show (GET) for Accounts, Buckets, Contacts, Notes, Tasks, and Users
+*  Implement index and show (GET) for ContactHistories, Contacts, Notes, Tasks
+*  Implement index (GET) for Followups
+*  Implement list (GET) for Buckets
+*  Implement search (GET) for Contacts
+*  Implement discover (GET) for Signup
+*  Implement current (GET) for Users
+*  Implement destroy (DELETE) for Accounts, Buckets, ContactHistories, Contacts, Notes, Tasks
+*  Implement create (POST) for Accounts, Buckets, ContactHistories, Followups, Notes, Signup, Tasks
+*  Implement complete (POST) for Tasks
+*  Implement bucket, ignore, and snooze (POST) for Contacts
+*  Implement ignore (POST) for Tasks
+*  Implement snooze (POST) for Tasks
+*  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
 
 ### MIT License
 
