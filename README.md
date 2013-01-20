@@ -7,6 +7,30 @@ It is modeled after the Twilio PHP Helper library because I think it's generally
 
 This is v0.01 so it is super rudiment and subject to change at any time.. like now. Or maybe now.
 
+## Getting started
+
+You have to have a Contactually account. Then copy the creds-dist.php file to creds.php and fill in the credentials you plan to use. Then you should be able to run any of the scripts in /examples out of the box.
+
+There are two different strategies you can use to authenticate:
+
+# You can use your existing email address and password and initialize the object like so:
+
+```php
+$client = new Services_Contactually(array('email' => $email, 'password' => $password));
+```
+
+#  Alternatively, you can use the API key found here - https://www.contactually.com/settings/integrations - and initialize the object like so:
+
+```php
+$client = new Services_Contactually(array('apikey' => $apikey));
+```
+
+While the functional difference between these approaches is negligible, the key-based approach is generally considered better.
+
+
+## TODO
+
+*  Implement apikey-based authentication
 *  Implement discover, index, and show (GET) for Accounts, Buckets, Contacts, Notes, Tasks, and Users
 *  Implement index and show (GET) for ContactHistories, Contacts, Notes, Tasks
 *  Implement index (GET) for Followups
@@ -21,6 +45,7 @@ This is v0.01 so it is super rudiment and subject to change at any time.. like n
 *  Implement ignore (POST) for Tasks
 *  Implement snooze (POST) for Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
+*  Implement error handling for all of the above
 
 ### MIT License
 
