@@ -29,6 +29,6 @@ abstract class Services_Contactually_Resources_List
     }
     public function valid()
     {
-        return isset($this->_obj->accounts[$this->_index]);
+        return isset($this->_obj[$this->_index]);
     }
 }
