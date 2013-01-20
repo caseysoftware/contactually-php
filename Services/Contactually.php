@@ -18,11 +18,10 @@ spl_autoload_register('Services_Contactually_autoload');
  * @author   Keith Casey <contrib@caseysoftware.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class Services_Contactually
+class Services_Contactually extends Services_Contactually_Resources_Base
 {
-    protected $cookie_path = '';
 //TODO: I don't like having to enumerate these up front. The library should allow the API to inform on available resources.
-    protected $sub_resources = array(
+    protected $resources = array(
                     'accounts' => 'Account',
                     'buckets' => 'Bucket',
                     'contact_histories' => 'ContactHistory',
@@ -52,77 +51,30 @@ class Services_Contactually
             throw new Services_Contactually_AuthException("To authenticate, you must include either an API Key or an email and password");
         }
 
-        $auth_url = 'https://www.contactually.com/users/sign_in.json';
-
-        $this->post($auth_url, $params);
+        $this->_authenticate($params);
     }
 
-    /*
-     * Shifted creating all the Subresouces from in the constructor to creating
-     *    them as needed.
-     * 
-     */
     public function __get($name)
     {
-        $this->$name = null;
+        $object = null;
 
-        if (isset($this->sub_resources[$name])) {
-            $class = $this->sub_resources[$name];
-            $classname = 'Services_Contactually_'.$class;
-            $this->$name = new $classname($this);
+        if (isset($this->resources[$name])) {
+            $classname = 'Services_Contactually_'.ucwords($name);
+            $object = new $classname($this);
         }
 
-        return $this->$name;
+        return $object;
     }
 
-    public function post($uri, $params = array())
+    protected function _authenticate($params)
     {
-        $curl_opts = array(
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $uri,
-            CURLOPT_POST => count($params),
-            CURLOPT_POSTFIELDS => $params,
-/* TODO: This handles the cookie-based auth. Will need refactoring later. */
-            CURLOPT_COOKIEJAR => $this->cookie_path,
-            CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
-        );
-        
-        return $this->_execute($curl_opts);
-    }
+        $auth_url = 'https://www.contactually.com/users/sign_in.json';
+        $success = array(200 => 'OK', 201 => 'Created', 202 => 'Accepted');
 
-    public function get($uri, $params = array())
-    {
-        $uri .= (count($params)) ? '?'.http_build_query($params) : '';
+        $this->_post($auth_url, $params);
 
-        $curl_opts = array(
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $uri,
-            CURLOPT_COOKIEFILE => $this->cookie_path,
-            
-        );
-
-        return $this->_execute($curl_opts);
-    }
-
-    protected function _execute($curl_params = array())
-    {
-
-        //open connection
-        $connection = curl_init();
-        foreach($curl_params as $option => $value) {
-            curl_setopt($connection, $option, $value);
+        if (!isset($success[$this->status])) {
+            throw new Services_Contactually_AuthException("Authentication failed - " . $this->_obj->error);
         }
-//TODO:  We need to add certificate validation. I've disabled it for now.
-curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
-
-        //execute request
-        $response = curl_exec($connection);
-
-//TODO:  We have the response code, we should probably do something with it.
-        $this->status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-
-        curl_close($connection);
-
-        return json_decode($response);
     }
 }
