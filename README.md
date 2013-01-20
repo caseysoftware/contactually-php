@@ -31,19 +31,18 @@ While the functional difference between these approaches is negligible, the key-
 ## TODO
 
 *  ~~Implement apikey-based authentication~~
-*  Implement discover, index, and show (GET) for Accounts, Buckets, Contacts, Notes, Tasks, and Users
-*  Implement index and show (GET) for ContactHistories, Contacts, Notes, Tasks
-*  Implement index (GET) for Followups
+*  ~~Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks~~
+*  Implement discover (GET) for Accounts, Buckets, Contacts, Notes, Signup, Tasks, and Users
+*  Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users
 *  Implement list (GET) for Buckets
 *  Implement search (GET) for Contacts
-*  Implement discover (GET) for Signup
 *  Implement current (GET) for Users
 *  Implement destroy (DELETE) for Accounts, Buckets, ContactHistories, Contacts, Notes, Tasks
 *  Implement create (POST) for Accounts, Buckets, ContactHistories, Followups, Notes, Signup, Tasks
 *  Implement complete (POST) for Tasks
-*  Implement bucket, ignore, and snooze (POST) for Contacts
-*  Implement ignore (POST) for Tasks
-*  Implement snooze (POST) for Tasks
+*  Implement bucket (POST) for Contacts
+*  Implement ignore (POST) for Contacts, Tasks
+*  Implement snooze (POST) for Contacts, Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
 *  Implement error handling for all of the above
 
@@ -55,10 +54,11 @@ These oddities are related to the API:
 
 These oddities are related to my implementation of the helper library:
 
+#  When you authenticate, a cookies.txt file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used
 
 ### MIT License
 
-Copyright (C) 2013, Keith Casey <keith at caseysoftware dot com>
+Copyright (C) 2013, Keith Casey <contrib at caseysoftware dot com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
