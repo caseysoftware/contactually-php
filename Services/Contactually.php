@@ -11,6 +11,13 @@ function Services_Contactually_autoload($className) {
 
 spl_autoload_register('Services_Contactually_autoload');
 
+/**
+ * Contactually API client interface.
+ *
+ * @package  Services\Contactually
+ * @author   Keith Casey <contrib@caseysoftware.com>
+ * @license  http://creativecommons.org/licenses/MIT/ MIT
+ */
 class Services_Contactually
 {
     protected $cookie_path = '';
@@ -34,15 +41,17 @@ class Services_Contactually
     {
         $this->cookie_path = getcwd() . '/cookie.txt';
 
-        /*
-         * TODO: I'm not a fan of this hack, but it seemed the most appropriate
-         *    for the time being to keep the rest of the param processing for the
-         *    API calls the same.
-         */
-        foreach($params as $param => $value) {
-            unset($params[$param]);
-            $params["user[$param]"] = $value;
+        if (isset($params['apikey'])) {
+            //do nothing, move along
+        } elseif (isset($params['email']) && isset($params['password'])) {
+            foreach($params as $param => $value) {
+                unset($params[$param]);
+                $params["user[$param]"] = $value;
+            }
+        } else {
+            throw new Services_Contactually_AuthException("To authenticate, you must include either an API Key or an email and password");
         }
+
         $auth_url = 'https://www.contactually.com/users/sign_in.json';
 
         $this->post($auth_url, $params);

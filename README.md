@@ -30,7 +30,7 @@ While the functional difference between these approaches is negligible, the key-
 
 ## TODO
 
-*  Implement apikey-based authentication
+*  ~~Implement apikey-based authentication~~
 *  Implement discover, index, and show (GET) for Accounts, Buckets, Contacts, Notes, Tasks, and Users
 *  Implement index and show (GET) for ContactHistories, Contacts, Notes, Tasks
 *  Implement index (GET) for Followups
@@ -46,6 +46,15 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement snooze (POST) for Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
 *  Implement error handling for all of the above
+
+## Oddities
+
+These oddities are related to the API:
+
+#  When you authenticate, you get back a 201 response code instead of 200 as you might expect
+
+These oddities are related to my implementation of the helper library:
+
 
 ### MIT License
 
