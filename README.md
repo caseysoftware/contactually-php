@@ -35,7 +35,7 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement discover (GET) for Accounts, Buckets, Contacts, Notes, Signup, Tasks, and Users
 *  ~~Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~
 *  ~~Implement list (GET) for Buckets~~
-*  Implement search (GET) for Contacts
+*  ~~Implement search (GET) for Contacts~~
 *  Implement current (GET) for Users
 *  Implement destroy (DELETE) for Accounts, Buckets, ContactHistories, Contacts, Notes, Tasks
 *  Implement create (POST) for Accounts, Buckets, ContactHistories, Followups, Notes, Signup, Tasks
