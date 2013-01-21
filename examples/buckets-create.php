@@ -7,6 +7,8 @@ $client = new Services_Contactually(array('apikey' => $apiKey));
 
 $bucket = new Services_Contactually_Bucket($client);
 
-$result = $bucket->show(53000);
+$params = array('name' => 'test bucket', 'num_days_to_followup' => 30, 'num_days_to_respond' => 45);
+
+$result = $bucket->create($params);
 
 print_r($result);
