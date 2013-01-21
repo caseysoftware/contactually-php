@@ -2,6 +2,8 @@
 
 class Services_Contactually_User extends Services_Contactually_Base
 {
-    //TODO: no freakin' clue what methods are implemented on this Resource
-    protected $show  = 'https://www.contactually.com/api/v1/current.json';
+    public function show()
+    {
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
+    }
 }

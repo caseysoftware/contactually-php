@@ -43,14 +43,9 @@ abstract class Services_Contactually_Base
 
     public function show($id = 0)
     {
-        $this->show = str_replace('<id>', $id, $this->show);
-        $myObject = $this->service->get("{$this->show}", array('id' => $id));
-
-        return $this->bind($myObject);
-    }
-
-    public function create($params = array())
-    {
+        $this->show = str_replace('<id>', $id, $this->_show_uri);
+        $json = $this->service->get("{$this->show}", array('id' => $id));
         
+        return $this->bind(json_decode($json, true));
     }
 }
