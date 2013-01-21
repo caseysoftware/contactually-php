@@ -22,7 +22,7 @@ spl_autoload_register('Services_Contactually_autoload');
  */
 class Services_Contactually extends Services_Contactually_Resources_Base
 {
-    const USER_AGENT = 'contactually-php/0.0.1';
+    const USER_AGENT = 'contactually-php/0.1.0';
 //TODO: I don't like having to enumerate these up front. The library should allow the API to inform on available resources.
     protected $resources = array(
                     'accounts' => 'Accounts',

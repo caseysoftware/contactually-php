@@ -13,13 +13,13 @@ You have to have a Contactually account. Then copy the creds-dist.php file to cr
 
 There are two different strategies you can use to authenticate:
 
-# You can use your existing email address and password and initialize the object like so:
+ * You can use your existing email address and password and initialize the object like so:
 
 ```php
 $client = new Services_Contactually(array('email' => $email, 'password' => $password));
 ```
 
-#  Alternatively, you can use the API key found here - https://www.contactually.com/settings/integrations - and initialize the object like so:
+ * Alternatively, you can use the API key found here - https://www.contactually.com/settings/integrations - and initialize the object like so:
 
 ```php
 $client = new Services_Contactually(array('apikey' => $apikey));
