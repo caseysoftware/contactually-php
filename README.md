@@ -51,11 +51,11 @@ While the functional difference between these approaches is negligible, the key-
 
 These oddities are related to the API:
 
-#  When you authenticate, you get back a 201 response code instead of 200 as you might expect
-
+ *  When you authenticate, you get back a 201 response code instead of 200 as you might expect
+ 
 These oddities are related to my implementation of the helper library:
 
-#  When you authenticate, a cookies.txt file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used
+ *  When you authenticate, a cookies.txt file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used
 
 ### MIT License
 
