@@ -1,6 +1,6 @@
 <?php
 
-class Services_Contactually_Exception_NotImplemented extends Exception
+class Services_Contactually_Exceptions_NotImplemented extends Exception
 {
     
 }
