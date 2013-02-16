@@ -32,13 +32,13 @@ While the functional difference between these approaches is negligible, the key-
 
 *  ~~Implement apikey-based authentication~~
 *  ~~Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks~~
-*  Implement discover (GET) for Accounts, Buckets, Contacts, Notes, Signup, Tasks, and Users
+*  Implement discover (GET) for Accounts and Signup
 *  ~~Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~
 *  ~~Implement list (GET) for Buckets~~
 *  ~~Implement search (GET) for Contacts~~
 *  ~~Implement current (GET) for Users~~
 *  Implement destroy (DELETE) for Accounts, Buckets, ContactHistories, Contacts, Notes, Tasks
-*  Implement create (POST) for Accounts, ~~Buckets~~, ContactHistories, Followups, Notes, Signup, Tasks
+*  Implement create (POST) for Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, Notes, Signup, Tasks
 *  Implement complete (POST) for Tasks
 *  Implement bucket (POST) for Contacts
 *  Implement ignore (POST) for Contacts, Tasks
