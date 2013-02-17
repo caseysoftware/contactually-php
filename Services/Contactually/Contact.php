@@ -21,14 +21,6 @@ class Services_Contactually_Contact extends Services_Contactually_Base
 
     public function create(array $params)
     {
-        $contact = array();
-
-        foreach($params as $key => $value) {
-            $contact["contact[$key]"] = $value;
-        }
-
-        $this->client->post($this->_create_uri, $contact);
-
-        return (201 == $this->client->status) ? true : false;
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
     }
 }

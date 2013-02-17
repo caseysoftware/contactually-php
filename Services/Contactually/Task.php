@@ -14,4 +14,9 @@ class Services_Contactually_Task extends Services_Contactually_Base
     public $completed_via = '';
 
     protected $_show_uri  = 'https://www.contactually.com/api/v1/tasks/<id>.json';
+
+    public function create(array $params)
+    {
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
+    }
 }

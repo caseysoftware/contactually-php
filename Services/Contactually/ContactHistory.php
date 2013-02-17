@@ -19,4 +19,9 @@ class Services_Contactually_ContactHistory extends Services_Contactually_Base
     public $incoming = '';
 
     protected $_show_uri  = 'https://www.contactually.com/api/v1/contact_histories/<id>.json';
+
+    public function create(array $params)
+    {
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
+    }
 }

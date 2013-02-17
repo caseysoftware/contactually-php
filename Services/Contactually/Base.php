@@ -25,4 +25,17 @@ abstract class Services_Contactually_Base
 
         return $this->bind(json_decode($json, true));
     }
+
+    public function create(array $params)
+    {
+        $properties = array();
+
+        foreach($params as $key => $value) {
+            $properties[$this->_resource . "[$key]"] = $value;
+        }
+
+        $this->client->post($this->_create_uri, $properties);
+
+        return (201 == $this->client->status) ? true : false;
+    }
 }
