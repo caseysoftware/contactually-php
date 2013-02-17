@@ -7,6 +7,6 @@ $client = new Services_Contactually(array('apikey' => $apiKey));
 
 $task = new Services_Contactually_Task($client);
 
-$result = $task->delete(5153164);
+$result = $task->complete(5153368);
 
 print_r($result);
