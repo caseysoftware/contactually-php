@@ -51,7 +51,9 @@ While the functional difference between these approaches is negligible, the key-
 
 These oddities are related to the API:
 
- *  When you authenticate, you get back a 201 response code instead of 200 as you might expect
+ *  When you authenticate, you get back a 201 response code instead of 200 as you'd expect
+ *  When you ignore a contact, you get back a 404 response code no matter what.. whether if it was successfully created or the contact didn't exist
+ *  There doesn't seem to be a way to remove the results of a Contact->ignore()
  
 These oddities are related to my implementation of the helper library:
 
