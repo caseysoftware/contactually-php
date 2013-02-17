@@ -18,4 +18,9 @@ class Services_Contactually_Followup extends Services_Contactually_Base
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
     }
+
+    public function delete($id = 0)
+    {
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
+    }
 }

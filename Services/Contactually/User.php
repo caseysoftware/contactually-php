@@ -15,4 +15,9 @@ class Services_Contactually_User extends Services_Contactually_Base
 
         return $this->bind(json_decode($json, true));
     }
+
+    public function delete($id = 0)
+    {
+        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
+    }
 }
