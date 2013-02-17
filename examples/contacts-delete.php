@@ -5,8 +5,8 @@ include_once '../Services/Contactually.php';
 
 $client = new Services_Contactually(array('apikey' => $apiKey));
 
-$contact_history = new Services_Contactually_ContactHistory($client);
+$contact = new Services_Contactually_Contact($client);
 
-$result = $contact_history->show(27987518);
+$result = $contact->delete(28074400);
 
 print_r($result);

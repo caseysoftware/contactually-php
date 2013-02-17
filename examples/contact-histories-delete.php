@@ -7,6 +7,6 @@ $client = new Services_Contactually(array('apikey' => $apiKey));
 
 $contact_history = new Services_Contactually_ContactHistory($client);
 
-$result = $contact_history->show(27987518);
+$result = $contact_history->delete(81980030);
 
 print_r($result);
