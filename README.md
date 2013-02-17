@@ -40,7 +40,7 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement destroy (DELETE) for Accounts, ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
 *  Implement create (POST) for Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, ~~Notes~~, Signup, Tasks
 *  Implement complete (POST) for Tasks
-*  Implement bucket (POST) for Contacts
+*  ~~Implement bucket (POST) for Contacts~~
 *  Implement ignore (POST) for Contacts, Tasks
 *  Implement snooze (POST) for Contacts, Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
