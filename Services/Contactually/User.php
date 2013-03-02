@@ -1,6 +1,6 @@
 <?php
 
-class Services_Contactually_User extends Services_Contactually_Base
+class Services_Contactually_User extends Services_Contactually_Resources_Base
 {
     protected $_current_uri = 'https://www.contactually.com/api/v1/users/current.json';
 

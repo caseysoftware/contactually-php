@@ -1,6 +1,6 @@
 <?php
 
-class Services_Contactually_Signup extends Services_Contactually_Base
+class Services_Contactually_Signup extends Services_Contactually_Resources_Base
 {
     public $id = '';
     public $username = '';
