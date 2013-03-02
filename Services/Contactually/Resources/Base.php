@@ -2,70 +2,56 @@
 
 abstract class Services_Contactually_Resources_Base
 {
-    protected $cookie_path = '';
+    protected $client = null;
 
-    public function get($uri, $params = array())
+    public $response_code = null;
+    public $response_body = null;
+
+    public function __construct(Services_Contactually $client)
     {
-        $uri .= (count($params)) ? '?'.http_build_query($params) : '';
-
-        $curl_opts = array(
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $uri,
-            CURLOPT_COOKIEFILE => $this->cookie_path,
-        );
-
-        return $this->_execute($curl_opts);
+        $this->client = $client;
     }
 
-    public function delete($uri, $params = array())
+    public function bind($properties)
     {
-        $curl_opts = array(
-            CURLOPT_CUSTOMREQUEST => 'DELETE',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $uri,
-            CURLOPT_POST => count($params),
-            CURLOPT_POSTFIELDS => $params,
-/* TODO: This handles the cookie-based auth. Will need refactoring later.*/
-            CURLOPT_COOKIEJAR => $this->cookie_path,
-            CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
-        );
-
-        return $this->_execute($curl_opts);
-    }
-
-    public function post($uri, $params = array())
-    {
-        $curl_opts = array(
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_URL => $uri,
-            CURLOPT_POST => count($params),
-            CURLOPT_POSTFIELDS => $params,
-/* TODO: This handles the cookie-based auth. Will need refactoring later.*/
-            CURLOPT_COOKIEJAR => $this->cookie_path,
-            CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
-        );
-
-        return $this->_execute($curl_opts);
-    }
-
-    protected function _execute($curl_params = array())
-    {
-        //open connection
-        $connection = curl_init();
-        foreach($curl_params as $option => $value) {
-            curl_setopt($connection, $option, $value);
+        foreach($properties as $property => $value) {
+            $this->$property = $value;
         }
-//TODO:  We need to add certificate validation. I've disabled it for now.
-curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 
-        //execute request
-        $this->_result = curl_exec($connection);
+        return $this;
+    }
 
-//TODO:  We have the response code, we should probably do something with it.
-        $this->status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
+    public function show($id = 0)
+    {
+        $this->show = str_replace('<id>', $id, $this->_show_uri);
+        $json = $this->client->get("{$this->show}", array('id' => $id));
 
-        curl_close($connection);
+        return $this->bind(json_decode($json, true));
+    }
 
-        return $this->_result;
+    public function create(array $params)
+    {
+        $properties = array();
+
+        foreach($params as $key => $value) {
+            $properties[$this->_resource . "[$key]"] = $value;
+        }
+
+        $this->client->post($this->_create_uri, $properties);
+        $this->response_code = $this->client->status;
+        $this->response_body = $this->client->content;
+
+// TODO: Oddity, sometimes a 200 is used instead of a 201 to note the create was successful
+        $successCodes = array(200, 201);
+
+        return (in_array($this->client->status, $successCodes)) ? true : false;
+    }
+
+    public function delete($id = 0)
+    {
+        $this->delete = str_replace('<id>', $id, $this->_delete_uri);
+        $json = $this->client->delete("{$this->delete}", array('id' => $id));
+
+        return (200 == $this->client->status) ? true : false;
     }
 }
