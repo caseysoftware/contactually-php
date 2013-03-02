@@ -59,13 +59,13 @@ abstract class Services_Contactually_Resources_Base
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 
         //execute request
-        $json = curl_exec($connection);
+        $this->_result = curl_exec($connection);
 
 //TODO:  We have the response code, we should probably do something with it.
         $this->status = curl_getinfo($connection, CURLINFO_HTTP_CODE);
 
         curl_close($connection);
 
-        return $json;
+        return $this->_result;
     }
 }

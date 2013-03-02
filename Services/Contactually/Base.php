@@ -3,6 +3,7 @@
 abstract class Services_Contactually_Base
 {
     protected $client = null;
+    protected $_result = null;
 
     public function __construct(Services_Contactually $client)
     {
@@ -36,7 +37,10 @@ abstract class Services_Contactually_Base
 
         $this->client->post($this->_create_uri, $properties);
 
-        return (201 == $this->client->status) ? true : false;
+// TODO: Oddity, sometimes a 200 is used instead of a 201 to note the create was successful
+        $successCodes = array(200, 201);
+
+        return (in_array($this->client->status, $successCodes)) ? true : false;
     }
 
     public function delete($id = 0)
