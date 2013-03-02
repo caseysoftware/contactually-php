@@ -8,8 +8,9 @@ $client = new Services_Contactually(array('apikey' => $apiKey));
 $contact = new Services_Contactually_Contact($client);
 
 $params = array(
-    'first_name' => 'aaFirstName',
-    'last_name' => 'astName',
+    'first_name' => 'Bruce',
+    'last_name' => 'Wayne',
+    'email' => 'definitely.not.batman@example.com',
     'title' => 'Sir',
     'company' => 'Wayne Enterprises',
     'visible' => 1,
@@ -17,10 +18,8 @@ $params = array(
     'last_contacted' => '2012-10-21T00:22:24Z',
     'hits' => 1,
     'user_bucket_id' => '53000',
-    //'address' => '123 Fake Street Gotham City',
-    //'phone' => '5125551212',
     );
 
 $result = $contact->create($params);
 
-print_r($result);
+print_r($client);
