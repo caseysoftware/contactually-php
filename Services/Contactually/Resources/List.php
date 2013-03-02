@@ -13,10 +13,9 @@ abstract class Services_Contactually_Resources_List
 
     public function index()
     {
-        $json = $this->client->get($this->_index_uri);
-        $object = json_decode($json);
+        $this->client->get($this->_index_uri);
 
-        $this->_json = $json;
+        $object = $this->client->response_obj;
         $this->_obj  = $object->{$this->_data};
         $this->count = $object->count;
 

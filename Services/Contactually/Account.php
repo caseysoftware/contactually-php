@@ -15,7 +15,6 @@ class Services_Contactually_Account extends Services_Contactually_Resources_Base
     {
         $json = $this->client->get("{$this->_discover_uri}", array('email' => $email));
 
-
         throw new Services_Contactually_Exceptions_NotImplemented(
                 "This method is not implemented as the uri *looks* like it's wrong.."
                 );

@@ -145,9 +145,9 @@ class Services_Contactually extends Services_Contactually_Resources_Base
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 
         //execute request
-        $this->response_body = curl_exec($connection);
+        $this->response_json = curl_exec($connection);
         $this->response_code = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-        $this->response_json = json_decode($this->response_body);
+        $this->response_obj  = json_decode($this->response_json);
 
         curl_close($connection);
     }
