@@ -8,6 +8,7 @@ $client = new Services_Contactually(array('apikey' => $apiKey));
 $tasks = $client->tasks->index();
 // Now our $notes object has a count of notes and iterable set of notes
 
+echo "\nDisplaying {$tasks->count} records:\n";
 foreach($tasks as $task) {
     echo $task->title . "\n";
     echo $task->due_date . "\n";
