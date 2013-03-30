@@ -8,7 +8,7 @@ $client = new Services_Contactually(
         );
 
 echo $client->response_code;
-
+echo "\n";
 unset($client);
 
 $client = new Services_Contactually(array('apikey' => $apiKey));
