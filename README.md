@@ -44,7 +44,7 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement ignore (POST) for ~~Contacts~~, Tasks
 *  Implement snooze (POST) for Contacts, Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
-*  Implement pagination for ContactHistories->index(), Contacts->index(), Contacts->search(), Notes->search(), Tasks->search()
+*  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index()~~, Contacts->search(), Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
 
 ## Oddities
