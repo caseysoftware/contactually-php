@@ -20,10 +20,11 @@ class Services_Contactually_Contacts extends Services_Contactually_Resources_Lis
     {
         $myArray['term'] = $term;
 
-        $json = $this->client->get($this->_search_uri, $myArray);
-        $object = json_decode($json);
+        $this->client->get($this->_search_uri, $myArray);
 
-        $this->_json = $json;
+        $object = $this->client->response_obj;
+
+        $this->_json = $this->client->response_json;
         $this->_obj  = $object->{$this->_data};
         $this->count = $object->count;
 
