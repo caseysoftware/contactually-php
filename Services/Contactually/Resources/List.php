@@ -69,6 +69,23 @@ abstract class Services_Contactually_Resources_List
 
         return $this->index($this->page, $this->limit);
     }
+
+    public function getNextResults()
+    {
+        $this->page++;
+        $this->page = min($this->page, $this->_page_count);
+
+        return $this->search($this->term, $this->page, $this->limit);
+    }
+
+    public function getPreviousResults()
+    {
+        $this->page--;
+        $this->page = max($this->page, 1);
+
+        return $this->search($this->term, $this->page, $this->limit);
+    }
+
     public function hasMorePages()
     {
         return ($this->page < $this->_page_count);
