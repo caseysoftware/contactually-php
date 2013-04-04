@@ -3,7 +3,7 @@
 include_once '../creds.php';
 include_once '../Services/Contactually.php';
 
-$client = new Services_Contactually(array('apikey' => $apiKey));
+$client = new Services_Contactually(array('api_key' => $apiKey));
 
 $contacts = $client->contacts->index($page = 1, $limit = 10);
 // Now our $contacts object has a count of contacts and iterable set of contacts
