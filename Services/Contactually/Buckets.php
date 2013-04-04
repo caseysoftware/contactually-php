@@ -10,6 +10,27 @@ class Services_Contactually_Buckets extends Services_Contactually_Resources_List
     protected $_class = 'Services_Contactually_Bucket';
  
     protected $_index_uri = 'buckets.json';
+    protected $_list_uri  = 'buckets/list.json';
+
+    public function __call($name, $params)
+    {
+        /**
+         * @internal The list() method has to be implemented this way because
+         *    list is a function name in PHP.
+         */
+        if ('list' == $name) {
+            $this->client->get($this->client->getUri() . $this->_list_uri);
+
+            $object = $this->client->response_obj;
+            $this->_obj  = $object->bucket_sets;
+
+            $this->count = $object->count;
+            $this->_total = $object->count;
+            $this->_page_count = 1;
+
+            return $this;
+        }
+    }
 
     public function getTotalRecords()
     {

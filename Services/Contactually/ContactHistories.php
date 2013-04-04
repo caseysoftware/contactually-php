@@ -12,5 +12,4 @@ class Services_Contactually_ContactHistories extends Services_Contactually_Resou
     protected $_class = 'Services_Contactually_ContactHistory';
 
     protected $_index_uri = 'contact_histories.json';
-
 }

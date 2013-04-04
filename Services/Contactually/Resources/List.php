@@ -38,7 +38,13 @@ abstract class Services_Contactually_Resources_List
         $this->_obj  = $object->{$this->_data};
 
         $this->count = $object->count;
-        $this->_total = $object->total_count;
+        /**
+         * @internal This is another oddity where the total_count property
+         *    exists on most of the resources but not all of them. This check
+         *    is in place so we don't generate a warning in the PHP error_log.
+         */
+        $this->_total = isset($object->total_count) ?
+                $object->total_count : $object->count;
         $this->_page_count = ceil($this->_total / $this->limit);
 
         return $this;
