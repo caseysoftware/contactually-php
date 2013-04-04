@@ -11,10 +11,9 @@ class Services_Contactually_Bucket extends Services_Contactually_Resources_Base
     public $num_days_to_followup = '';
     public $num_days_to_respond = '';
 
-    protected $_show_uri = 'https://www.contactually.com/api/v1/buckets/<id>.json';
-
     protected $_resource = 'bucket';
-    protected $_create_uri = 'https://www.contactually.com/api/v1/buckets.json';
 
-    protected $_delete_uri = 'https://www.contactually.com/api/v1/buckets/<id>.json';
+    protected $_show_uri   = 'buckets/<id>.json';
+    protected $_create_uri = 'buckets.json';
+    protected $_delete_uri = 'buckets/<id>.json';
 }

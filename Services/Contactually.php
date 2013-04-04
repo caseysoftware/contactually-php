@@ -23,6 +23,8 @@ spl_autoload_register('Services_Contactually_autoload');
 class Services_Contactually extends Services_Contactually_Resources_Base
 {
     const USER_AGENT = 'contactually-php/0.8.0';
+
+    protected $_baseUri = 'https://www.contactually.com/api/v1/';
     protected $_successCodes = array(200 => 'OK', 201 => 'Created', 202 => 'Accepted');
 
     public $response_body = null;
@@ -79,6 +81,9 @@ class Services_Contactually extends Services_Contactually_Resources_Base
         return $object;
     }
 
+    /**
+     * @todo This is another place where we have an odd URI in the mix..
+     */
     protected function _authenticate($params)
     {
         $auth_url = 'https://www.contactually.com/users/sign_in.json';
@@ -153,5 +158,10 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
         $this->response_obj  = json_decode($this->response_json);
 
         curl_close($connection);
+    }
+
+    public function getUri()
+    {
+        return $this->_baseUri;
     }
 }

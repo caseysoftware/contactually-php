@@ -2,7 +2,7 @@
 
 class Services_Contactually_User extends Services_Contactually_Resources_Base
 {
-    protected $_current_uri = 'https://www.contactually.com/api/v1/users/current.json';
+    protected $_current_uri = 'users/current.json';
 
     public function show()
     {
@@ -11,7 +11,7 @@ class Services_Contactually_User extends Services_Contactually_Resources_Base
 
     public function current()
     {
-        $json = $this->client->get($this->_current_uri);
+        $json = $this->client->get($this->client->getUri() . $this->_current_uri);
 
         return $this->bind(json_decode($json, true));
     }

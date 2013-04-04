@@ -3,15 +3,15 @@
 class Services_Contactually_Contacts extends Services_Contactually_Resources_List
     implements Services_Contactually_Interfaces_Index
 {
-    protected $_index_uri = 'https://www.contactually.com/api/v1/contacts.json';
-    protected $_search_uri = 'https://www.contactually.com/api/v1/contacts/search.json';
+    protected $_data = 'contacts';
+    protected $_class = 'Services_Contactually_Contact';
 
     /**
      * @todo TODO: implement additional filters: bucket_id, unbucketed, full,
      *    tag, updated_since
      */
-    protected $_data = 'contacts';
-    protected $_class = 'Services_Contactually_Contact';
+    protected $_index_uri  = 'contacts.json';
+    protected $_search_uri = 'contacts/search.json';
 
     /**
      * @todo TODO: implement the "full" parameter to allow for complete/deep

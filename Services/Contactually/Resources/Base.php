@@ -21,7 +21,7 @@ abstract class Services_Contactually_Resources_Base
     public function show($id = 0)
     {
         $this->show = str_replace('<id>', $id, $this->_show_uri);
-        $this->client->get("{$this->show}", array('id' => $id));
+        $this->client->get($this->client->getUri() . $this->show, array('id' => $id));
 
         return $this->bind($this->client->response_obj);
     }
@@ -41,7 +41,7 @@ abstract class Services_Contactually_Resources_Base
             $properties[$this->_resource . "[$key]"] = $value;
         }
 
-        $this->client->post($this->_create_uri, $properties);
+        $this->client->post($this->client->getUri() . $this->_create_uri, $properties);
 
         $successCodes = array(200, 201);
 
@@ -51,7 +51,7 @@ abstract class Services_Contactually_Resources_Base
     public function delete($id = 0)
     {
         $this->delete = str_replace('<id>', $id, $this->_delete_uri);
-        $this->client->delete("{$this->delete}", array('id' => $id));
+        $this->client->delete($this->client->getUri() . $this->delete, array('id' => $id));
 
         return (200 == $this->client->response_code) ? true : false;
     }

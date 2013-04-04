@@ -8,10 +8,9 @@ class Services_Contactually_Note extends Services_Contactually_Resources_Base
     public $parent_contact_id = '';
     public $timestamp = '';
 
-    protected $_show_uri = 'https://www.contactually.com/api/v1/notes/<id>.json';
-
     protected $_resource = 'note';
-    protected $_create_uri = 'https://www.contactually.com/api/v1/notes.json';
 
-    protected $_delete_uri = 'https://www.contactually.com/api/v1/notes/<id>.json';
+    protected $_show_uri   = 'notes/<id>.json';
+    protected $_create_uri = 'notes.json';
+    protected $_delete_uri = 'notes/<id>.json';
 }

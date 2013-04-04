@@ -18,9 +18,8 @@ class Services_Contactually_ContactHistory extends Services_Contactually_Resourc
     public $manual_history_type = '';
     public $incoming = '';
 
-    protected $_show_uri  = 'https://www.contactually.com/api/v1/contact_histories/<id>.json';
-
-    protected $_delete_uri = 'https://www.contactually.com/api/v1/contact_histories/<id>.json';
+    protected $_show_uri   = 'contact_histories/<id>.json';
+    protected $_delete_uri = 'contact_histories/<id>.json';
 
     public function create(array $params)
     {
