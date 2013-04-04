@@ -29,7 +29,10 @@ class Services_Contactually extends Services_Contactually_Resources_Base
     public $response_code = null;
     public $response_json = null;
 
-//TODO: I don't like having to enumerate these up front. The library should allow the API to inform on available resources.
+    /**
+     * @internal I don't like having to enumerate these up front. The library
+     *    should allow the API to inform on available resources.
+     */
     protected $resources = array(
                     'accounts' => 'Accounts',
                     'buckets' => 'Buckets',
@@ -41,7 +44,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
                     'users' => 'Users'
                 );
 
-    /*
+    /**
      * Authentication derived from the docs: http://developers.contactually.com/
      *   and influenced by PSR-0 and Twilio's PHP library.
      */
@@ -111,7 +114,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
             CURLOPT_URL => $uri,
             CURLOPT_POST => count($params),
             CURLOPT_POSTFIELDS => $params,
-/* TODO: This handles the cookie-based auth. Will need refactoring later.*/
+/* @todo TODO: This handles the cookie-based auth. Will need refactoring later.*/
             CURLOPT_COOKIEJAR => $this->cookie_path,
             CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
         );
@@ -126,7 +129,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
             CURLOPT_URL => $uri,
             CURLOPT_POST => count($params),
             CURLOPT_POSTFIELDS => $params,
-/* TODO: This handles the cookie-based auth. Will need refactoring later.*/
+/* @todo TODO: This handles the cookie-based auth. Will need refactoring later.*/
             CURLOPT_COOKIEJAR => $this->cookie_path,
             CURLOPT_COOKIEFILE => $this->cookie_path, //saved cookies
         );
@@ -141,7 +144,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
         foreach($curl_params as $option => $value) {
             curl_setopt($connection, $option, $value);
         }
-//TODO:  We need to add certificate validation. I've disabled it for now.
+/* @todo TODO:  We need to add certificate validation. I've disabled it for now.*/
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 
         //execute request

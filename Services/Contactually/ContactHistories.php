@@ -5,8 +5,9 @@ class Services_Contactually_ContactHistories extends Services_Contactually_Resou
 {
     protected $_index_uri = 'https://www.contactually.com/api/v1/contact_histories.json';
     /**
-     * @todo TODO: implement pagination and additional filter: contact_id, page, limit
-     * @internal This is one of the odd names.. it should be contact_histories but is email_histories instead
+     * @todo TODO: implement per-contact filter: contact_id
+     * @internal This is one of the odd names.. it should be contact_histories
+     *    but is email_histories instead
      */
     protected $_data = 'email_histories';
     protected $_class = 'Services_Contactually_ContactHistory';

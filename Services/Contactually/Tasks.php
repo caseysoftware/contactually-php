@@ -5,7 +5,7 @@ class Services_Contactually_Tasks extends Services_Contactually_Resources_List
 {
     protected $_index_uri = 'https://www.contactually.com/api/v1/tasks.json';
     /**
-     * @todo TODO: implement pagination and additional filter: contact_id, page, limit
+     * @todo TODO: implement per-contact filter: contact_id
      */
     protected $_data = 'tasks';
     protected $_class = 'Services_Contactually_Task';

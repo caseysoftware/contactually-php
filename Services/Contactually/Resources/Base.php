@@ -26,6 +26,13 @@ abstract class Services_Contactually_Resources_Base
         return $this->bind($this->client->response_obj);
     }
 
+    /**
+     * @internal This is one of the oddities.. sometimes a 200 is used instead
+     *    of a 201 to note the create was successful
+     *
+     * @param array $params
+     * @return boolean
+     */
     public function create(array $params)
     {
         $properties = array();
@@ -36,7 +43,6 @@ abstract class Services_Contactually_Resources_Base
 
         $this->client->post($this->_create_uri, $properties);
 
-// TODO: Oddity, sometimes a 200 is used instead of a 201 to note the create was successful
         $successCodes = array(200, 201);
 
         return (in_array($this->client->response_code, $successCodes)) ? true : false;
