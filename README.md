@@ -7,6 +7,10 @@ It is modeled after the Twilio PHP Helper library because I think it's generally
 
 This is **v0.8.0** so it is super rudiment and subject to change at any time.. like now. Or maybe now.
 
+## Requirements
+
+This assumes you have cURL installed along with the corresponding php-curl interface. It could be extended to support other HTTP transport tools but I'm kinda lazy.
+
 ## Getting started
 
 You have to have a Contactually account. Then copy the creds-dist.php file to creds.php and fill in the credentials you plan to use. Then you should be able to run any of the scripts in /examples out of the box.
