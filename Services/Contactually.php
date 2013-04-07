@@ -28,7 +28,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
     protected $_successCodes = array(200 => 'OK', 201 => 'Created', 202 => 'Accepted');
     protected $_api_key = null;
 
-    public $response_body = null;
+    public $response_obj  = null;
     public $response_code = null;
     public $response_json = null;
 
