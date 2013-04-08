@@ -160,9 +160,12 @@ class Services_Contactually extends Services_Contactually_Resources_Base
     {
         //open connection
         $connection = curl_init();
+        curl_setopt($connection, CURLOPT_USERAGENT, self::USER_AGENT);
+
         foreach($curl_params as $option => $value) {
             curl_setopt($connection, $option, $value);
         }
+
 /* @todo TODO:  We need to add certificate validation. I've disabled it for now.*/
 curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 
