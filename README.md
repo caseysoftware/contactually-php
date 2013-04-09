@@ -5,7 +5,7 @@ This is a PHP helper for the Contactually API - http://developers.contactually.c
 
 It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through. This isn't official but should generally work except for the incomplete items in the TODO list below.
 
-This is **v0.8.0** so it is super rudiment and subject to change at any time.. like now. Or maybe now.
+This is **v0.8.0** so it is super rudimentary and subject to change at any time.. like now. Or maybe now.
 
 ## Requirements
 
