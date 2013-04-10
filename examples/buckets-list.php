@@ -9,5 +9,5 @@ $buckets = $client->buckets->list();
 // Now our $buckets object has a count of buckets and iterable set of buckets
 
 foreach($buckets as $bucket) {
-    echo $bucket->name . "\n";
+    echo $bucket->title . "\n";
 }

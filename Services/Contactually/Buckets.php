@@ -17,6 +17,10 @@ class Services_Contactually_Buckets extends Services_Contactually_Resources_List
         /**
          * @internal The list() method has to be implemented this way because
          *    list is a function name in PHP.
+         *
+         * @todo Note that the field names here are *not* the same as the field
+         *   names in the normal $buckets->index() method call. In that case,
+         *   the property is called 'user_buckets' but here it's called 'bucketzs'
          */
         if ('list' == $name) {
             $this->client->get($this->client->getUri() . $this->_list_uri);
