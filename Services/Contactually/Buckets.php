@@ -23,9 +23,9 @@ class Services_Contactually_Buckets extends Services_Contactually_Resources_List
          *   the property is called 'user_buckets' but here it's called 'bucketzs'
          */
         if ('list' == $name) {
-            $this->client->get($this->client->getUri() . $this->_list_uri);
+            $this->_client->get($this->_client->getUri() . $this->_list_uri);
 
-            $object = $this->client->response_obj;
+            $object = $this->_client->response_obj;
             $this->_obj  = $object->bucket_sets;
 
             $this->count = $object->count;

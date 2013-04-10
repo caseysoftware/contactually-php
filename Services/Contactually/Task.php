@@ -25,8 +25,8 @@ class Services_Contactually_Task extends Services_Contactually_Resources_Base
     public function complete($id = 0)
     {
         $this->complete = str_replace('<id>', $id, $this->_complete_uri);
-        $json = $this->client->post($this->client->getUri() . $this->complete, array('id' => $id));
+        $json = $this->_client->post($this->_client->getUri() . $this->complete, array('id' => $id));
 
-        return (200 == $this->client->status) ? true : false;
+        return (200 == $this->_client->status) ? true : false;
     }
 }
