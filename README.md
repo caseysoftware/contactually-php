@@ -50,6 +50,7 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
 *  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search()~~, Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
+*  Start using SSL Certificate validation for better security
 
 ## Oddities
 
@@ -64,8 +65,8 @@ These oddities are related to the API:
  
 These oddities are related to my implementation of the helper library:
 
- *  When you authenticate, a cookies.txt file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used
-
+ *  When you authenticate, a cookies.txt "cookie jar" file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used. Using the API Key authentication avoids this and is probably better in general as the requests become Stateless.
+ 
 ### MIT License
 
 Copyright (C) 2013, Keith Casey <contrib at caseysoftware dot com>
