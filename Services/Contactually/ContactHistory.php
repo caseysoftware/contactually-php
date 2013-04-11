@@ -21,6 +21,11 @@ class Services_Contactually_ContactHistory extends Services_Contactually_Resourc
     protected $_show_uri   = 'contact_histories/<id>.json';
     protected $_delete_uri = 'contact_histories/<id>.json';
 
+    /**
+     * @todo
+     * @param array $params
+     * @throws Services_Contactually_Exception_NotImplemented
+     */
     public function create(array $params)
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");

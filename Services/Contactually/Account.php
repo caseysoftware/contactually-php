@@ -20,11 +20,21 @@ class Services_Contactually_Account extends Services_Contactually_Resources_Base
                 );
     }
 
+    /**
+     * @todo
+     * @param array $params
+     * @throws Services_Contactually_Exception_NotImplemented
+     */
     public function create(array $params)
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
     }
 
+    /**
+     * @todo
+     * @param array $params
+     * @throws Services_Contactually_Exception_NotImplemented
+     */
     public function delete($id = 0)
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");

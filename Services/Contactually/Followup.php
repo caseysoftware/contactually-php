@@ -14,12 +14,12 @@ class Services_Contactually_Followup extends Services_Contactually_Resources_Bas
     public $completed_via = '';
     public $reason = '';
 
-    public function show()
-    {
-        throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
-    }
-
-    public function delete($id = 0)
+    /**
+     * @todo
+     * @param array $params
+     * @throws Services_Contactually_Exception_NotImplemented
+     */
+    public function create(array $params)
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
     }

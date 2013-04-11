@@ -17,6 +17,11 @@ class Services_Contactually_Task extends Services_Contactually_Resources_Base
     protected $_delete_uri   = 'tasks/<id>.json';
     protected $_complete_uri = 'tasks/<id>/complete.json';
 
+    /**
+     * @todo
+     * @param array $params
+     * @throws Services_Contactually_Exception_NotImplemented
+     */
     public function create(array $params)
     {
         throw new Services_Contactually_Exception_NotImplemented("This method is not implemented");
