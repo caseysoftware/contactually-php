@@ -22,4 +22,4 @@ $params = array(
 
 $result = $contact->create($params);
 
-print_r($client);
+print_r($result);

@@ -43,9 +43,7 @@ abstract class Services_Contactually_Resources_Base
 
         $this->_client->post($this->_client->getUri() . $this->_create_uri, $properties);
 
-        $successCodes = array(200, 201);
-
-        return (in_array($this->_client->response_code, $successCodes)) ? true : false;
+        return $this->_client->response_obj;
     }
 
     public function delete($id = 0)

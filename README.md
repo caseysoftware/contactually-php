@@ -43,6 +43,7 @@ While the functional difference between these approaches is negligible, the key-
 *  ~~Implement current (GET) for Users~~
 *  Implement destroy (DELETE) for Accounts, ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
 *  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactHistories, Followups, ~~Notes~~, Signup, Tasks
+*  Update the create implementation to return the Location header of the new resource: Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, ~~Notes~~, and Tasks
 *  ~~Implement complete (POST) for Tasks~~
 *  ~~Implement bucket (POST) for Contacts~~
 *  Implement ignore (POST) for ~~Contacts~~, Tasks
@@ -59,8 +60,10 @@ These oddities are related to the API:
  *  When you authenticate, you get back a 201 response code instead of 200 as you'd expect
  *  When you ignore a contact, you get back a 404 response code no matter what.. whether if it was successfully created or the contact didn't exist
  *  There doesn't seem to be a way to remove the results of a Contact->ignore()
- *  After you create a resource, you don't get a reference back to it in the response body or the Location header as you'd expect. In order to find the resource, you must search for it
- *  Sometimes when you create a resource, you get back a 201 (Buckets) and sometimes you get back a 200 (Contacts)
+ *  ~~After you create a resource, you don't get a reference back to it in the response body or the Location header as you'd expect. In order to find the resource, you must search for it~~ - I was wrong, a Location header is provide as you'd expect.
+ *  Responses on resource creation are not consistent
+  *  After successfully creating a Bucket or a Note, you get back a 201 with a Location header to your new bucket or note
+  *  After successfully creating a Contact, you get back a 200 with the fully formed resource as if you had done a show (GET)
  *  The pagination of the Contact search results never returns more than ten results from the API regardless of the specified limit
  
 These oddities are related to my implementation of the helper library:
