@@ -63,7 +63,7 @@ These oddities are related to the API:
  *  ~~After you create a resource, you don't get a reference back to it in the response body or the Location header as you'd expect. In order to find the resource, you must search for it~~ - I was wrong, a Location header is provide as you'd expect.
  *  Responses on resource creation are not consistent
   *  After successfully creating a Bucket or a Note, you get back a 201 with a Location header to your new bucket or note
-  *  After successfully creating a Contact, you get back a 200 with the fully formed resource as if you had done a show (GET)
+  *  After successfully creating a Contact, you get back a 200 with the fully formed resource as if you had done a show (GET). For this helper library, I've hijacked the response to generate the 201-style message to make it the same as the other resources.
  *  The pagination of the Contact search results never returns more than ten results from the API regardless of the specified limit
  
 These oddities are related to my implementation of the helper library:
