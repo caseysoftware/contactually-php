@@ -162,7 +162,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
     {
         //open connection
         $connection = curl_init();
-        curl_setopt($connection, CURLOPT_USERAGENT, self::USER_AGENT);
+        $curl_params[CURLOPT_USERAGENT] = self::USER_AGENT;
 
         foreach($curl_params as $option => $value) {
             curl_setopt($connection, $option, $value);
@@ -174,9 +174,11 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
         //execute request
         $response = curl_exec($connection);
         $this->response_code = curl_getinfo($connection, CURLINFO_HTTP_CODE);
-
         switch($this->response_code)
         {
+//            case '0':
+//                $response = '{"error": "Network connection not available", "status": "408"}';
+//                break;
             case '201':
                 $headers = explode("\r\n\r\n", $response);
                 preg_match("/Location:\s\S+/", $headers[1], $matches);

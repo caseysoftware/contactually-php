@@ -68,7 +68,7 @@ These oddities are related to the API:
  
 These oddities are related to my implementation of the helper library:
 
- *  When you authenticate, a cookies.txt "cookie jar" file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used. Using the API Key authentication avoids this and is probably better in general as the requests become Stateless.
+ *  Deprecated: ~~When you authenticate, a cookies.txt "cookie jar" file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used. Using the API Key authentication avoids this and is probably better in general as the requests become Stateless.~~
  
 ### MIT License
 
