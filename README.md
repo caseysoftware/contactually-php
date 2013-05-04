@@ -52,6 +52,14 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search()~~, Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
 *  Start using SSL Certificate validation for better security
+*  Everything related to Activity
+*  Everything related to Contact Groupings
+*  Everything related to Contents
+*  Everything related to EmailAliases
+*  Everything related to EmailTemplates
+*  Everything related to Groupings
+*  Everything related to Partners
+*  Everything related to Webhooks
 
 ## Oddities
 
