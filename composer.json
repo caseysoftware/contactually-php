@@ -1,0 +1,22 @@
+{
+    "name": "caseysoftware/contactually-helper",
+    "type": "library",
+    "description": "A PHP wrapper for the Contactually API",
+    "keywords": ["contactually", "crm", "api", "contact management"],
+    "homepage": "https://github.com/caseysoftware/contactually-php",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Keith Casey",
+            "email": "contrib@caseysoftware.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.8"
+    },
+    "autoload": {
+        "psr-0": {
+            "Services_Contactually": ""
+        }
+    }
+}
