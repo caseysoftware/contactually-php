@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Contactually-php by caseysoftware</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Contactually-php</h1>
+        <p class="header">This is an unofficial library for interacting with the Contactually API. It's not complete but everything there works pretty well. I'm currently using this for my own tools &amp; experimentation.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/caseysoftware/contactually-php/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/caseysoftware/contactually-php/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/caseysoftware/contactually-php">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/caseysoftware">caseysoftware</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="contactually-php-library" class="anchor" href="#contactually-php-library"><span class="octicon octicon-link"></span></a>Contactually PHP Library</h1>
+
+<p>This is a PHP helper for the Contactually API - <a href="http://developers.contactually.com/">http://developers.contactually.com/</a></p>
+
+<p>It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through. This isn't official but should generally work except for the incomplete items in the TODO list below.</p>
+
+<p>This is v0.8.0 so it is pretty stable and I don't expect the interfaces to change much if at all.</p>
+
+<h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<p>This assumes you have cURL installed along with the corresponding php-curl interface. It could be extended to support other HTTP transport tools but I'm kinda lazy.</p>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>You have to have a Contactually account. Then copy the creds-dist.php file to creds.php and fill in the credentials you plan to use. Then you should be able to run any of the scripts in /examples out of the box.</p>
+
+<p>There are two different strategies you can use to authenticate:</p>
+
+<ul>
+<li>You can use your existing email address and password and initialize the object like so:</li>
+</ul><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Services_Contactually</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'email'</span> <span class="o">=&gt;</span> <span class="nv">$email</span><span class="p">,</span> <span class="s1">'password'</span> <span class="o">=&gt;</span> <span class="nv">$password</span><span class="p">));</span>
+</pre></div>
+
+<ul>
+<li>Alternatively, you can use the API key found here - <a href="https://www.contactually.com/settings/integrations">https://www.contactually.com/settings/integrations</a> - and initialize the object like so:</li>
+</ul><div class="highlight"><pre><span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Services_Contactually</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'apikey'</span> <span class="o">=&gt;</span> <span class="nv">$apikey</span><span class="p">));</span>
+</pre></div>
+
+<p>While the functional difference between these approaches is negligible, the key-based approach is generally considered better.</p>
+
+<h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
+
+<ul>
+<li> <del>Implement apikey-based authentication</del>
+</li>
+<li> <del>Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks</del>
+</li>
+<li> Implement discover (GET) for Accounts and Signup</li>
+<li> <del>Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users</del>
+</li>
+<li> <del>Implement list (GET) for Buckets</del>
+</li>
+<li> <del>Implement search (GET) for Contacts</del>
+</li>
+<li> <del>Implement current (GET) for Users</del>
+</li>
+<li> Implement destroy (DELETE) for Accounts, <del>Buckets, ContactHistories, Contacts, Notes, Tasks</del>
+</li>
+<li> Implement create (POST) for Accounts, <del>Buckets</del>, <del>Contacts</del>, ContactHistories, Followups, <del>Notes</del>, Signup, Tasks</li>
+<li> Update the create implementation to return the Location header of the new resource: Accounts, <del>Buckets</del>, Contacts, ContactHistories, Followups, <del>Notes</del>, and Tasks</li>
+<li> <del>Implement complete (POST) for Tasks</del>
+</li>
+<li> <del>Implement bucket (POST) for Contacts</del>
+</li>
+<li> Implement ignore (POST) for <del>Contacts</del>, Tasks</li>
+<li> Implement snooze (POST) for Contacts, Tasks</li>
+<li> Implement update (PUT) for Accounts, Buckets, Contacts, Tasks</li>
+<li> Implement pagination for <del>ContactHistories-&gt;index(), Contacts-&gt;index(), Tasks-&gt;index(), Contacts-&gt;search()</del>, Notes-&gt;search(), Tasks-&gt;search()</li>
+<li> Implement error handling for all of the above</li>
+<li> Start using SSL Certificate validation for better security</li>
+<li> Everything related to Activity</li>
+<li> Everything related to Contact Groupings</li>
+<li> Everything related to Contents</li>
+<li> Everything related to EmailAliases</li>
+<li> Everything related to EmailTemplates</li>
+<li> Everything related to Groupings</li>
+<li> Everything related to Partners</li>
+<li> Everything related to Webhooks</li>
+</ul><h2>
+<a name="oddities" class="anchor" href="#oddities"><span class="octicon octicon-link"></span></a>Oddities</h2>
+
+<p>These oddities are related to the API:</p>
+
+<ul>
+<li> When you authenticate, you get back a 201 response code instead of 200 as you'd expect</li>
+<li> When you ignore a contact, you get back a 404 response code no matter what.. whether if it was successfully created or the contact didn't exist</li>
+<li> There doesn't seem to be a way to remove the results of a Contact-&gt;ignore()</li>
+<li> <del>After you create a resource, you don't get a reference back to it in the response body or the Location header as you'd expect. In order to find the resource, you must search for it</del> - I was wrong, a Location header is provide as you'd expect.</li>
+<li> Responses on resource creation are not consistent
+
+<ul>
+<li> After successfully creating a Bucket or a Note, you get back a 201 with a Location header to your new bucket or note</li>
+<li> After successfully creating a Contact, you get back a 200 with the fully formed resource as if you had done a show (GET). For this helper library, I've hijacked the response to generate the 201-style message to make it the same as the other resources.</li>
+</ul>
+</li>
+<li> The pagination of the Contact search results never returns more than ten results from the API regardless of the specified limit</li>
+</ul><p>These oddities are related to my implementation of the helper library:</p>
+
+<ul>
+<li> Deprecated: <del>When you authenticate, a cookies.txt "cookie jar" file is written. If you don't clear the file, you may still be authenticated regardless of the credentials used. Using the API Key authentication avoids this and is probably better in general as the requests become Stateless.</del>
+</li>
+</ul><h3>
+<a name="mit-license" class="anchor" href="#mit-license"><span class="octicon octicon-link"></span></a>MIT License</h3>
+
+<p>Copyright (C) 2013, Keith Casey </p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
