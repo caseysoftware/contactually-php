@@ -4,6 +4,21 @@ abstract class Services_Contactually_Resources_Base
 {
     protected $_client = null;
 
+    /**
+     * @internal I don't like having to enumerate these subresources up front.
+     *    The library should allow the API to inform on available resources.
+     */
+    protected $resources = array(
+                    'accounts' => 'Accounts',
+                    'buckets' => 'Buckets',
+                    'contact_histories' => 'ContactHistories',
+                    'contacts' => 'Contacts',
+                    'followups' => 'Followups',
+                    'notes' => 'Notes',
+                    'tasks' => 'Tasks',
+                    'users' => 'Users'
+                );
+
     public function __construct(Services_Contactually $client)
     {
         $this->_client = $client;
