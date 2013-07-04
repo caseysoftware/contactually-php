@@ -167,7 +167,7 @@ curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, false);
 //                break;
             case '201':
                 preg_match("/Location:\s\S+/", $headers[1], $matches);
-                $location = substr($matches[0], strpos($matches[0], 'http'));
+                $location = (count($matches)) ? substr($matches[0], strpos($matches[0], 'http')) : '';
                 $response = '{"location": "' . $location . '", "status": "201"}';
                 break;
             case '406':
