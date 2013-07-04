@@ -57,21 +57,18 @@ abstract class Services_Contactually_Resources_Base
 
         $this->_client->post($this->_client->getUri() . $this->_create_uri, $properties);
 
-        /** 
-         * @todo @internal @risky
-         * This is one of the oddities.. the vast majority of the time, you'll
-         *   get a 201 Created as a result of this API call execept when you
-         *   create a Contact. Then you get back a 200 OK and the fully
-         *   qualified resource just like you had done a view (GET).
+        /**
+         * Since the API doesn't reliably return the Location header when the create is successful, this will check
+         *   for a zero length Location and generate one using the payload's id.
+         *
+         * @todo This should be refactored away once the API returns the header as expected.
          */
-        if ('contacts.json' == $this->_create_uri && 200 == $this->_client->response_code) {
-            $this->_client->response_json = substr($this->_client->response_json, 
-                    strpos($this->_client->response_json, '{"id"'));
-            $tmp_obj = json_decode($this->_client->response_json);
-            $id = $tmp_obj->id;
-            $new_uri = str_replace('<id>', $id, $this->_client->getUri() . $this->_show_uri);
+        if (201 == $this->_client->response_code || '' == $this->_client->response_obj->location)
+        {
+            $payload = $this->_client->response_headers[2];
+            $data = json_decode($payload);
+            $new_uri = str_replace('<id>', $data->id, $this->_client->getUri() . $this->_show_uri);
             $this->_client->response_obj->location = $new_uri;
-            $this->_client->response_obj->status = 201;            
         }
 
         return $this->_client->response_obj;
