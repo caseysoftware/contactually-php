@@ -9,7 +9,7 @@ This is v0.8.0 so it is pretty stable and I don't expect the interfaces to chang
 
 ## Requirements
 
-This assumes you have cURL installed along with the corresponding php-curl interface. It could be extended to support other HTTP transport tools but I'm kinda lazy.
+This assumes you have cURL installed along with the corresponding php-curl interface. It should be extended to support HTTP Streams but I'm kinda lazy.
 
 ## Getting started
 
@@ -35,25 +35,25 @@ While the functional difference between these approaches is negligible, the key-
 ## TODO
 
 *  ~~Implement apikey-based authentication~~
-*  ~~Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks~~
+*  Implement index (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks~~, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
 *  Implement discover (GET) for Accounts and Signup
-*  ~~Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~
+*  Implement show (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~, Groupings (formerly called Buckets)
+*  Implement statistics (GET) for Groupings (formerly called Buckets)
 *  ~~Implement list (GET) for Buckets~~
 *  ~~Implement search (GET) for Contacts~~
 *  ~~Implement current (GET) for Users~~
-*  Implement destroy (DELETE) for Accounts, ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
-*  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactHistories, Followups, ~~Notes~~, Signup, Tasks
+*  Implement destroy (DELETE) for Accounts, Groupings (formerly called Buckets), ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
+*  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), ~~Notes~~, Signup, Tasks, and Webhooks
 *  Update the create implementation to return the Location header of the new resource: Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, ~~Notes~~, and Tasks
 *  ~~Implement complete (POST) for Tasks~~
 *  ~~Implement bucket (POST) for Contacts~~
 *  Implement ignore (POST) for ~~Contacts~~, Tasks
 *  Implement snooze (POST) for Contacts, Tasks
-*  Implement update (PUT) for Accounts, Buckets, Contacts, Tasks
+*  Implement update (PUT) for Accounts, Buckets, Contacts, Groupings (formerly called Buckets), Tasks
 *  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search()~~, Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
 *  Start using SSL Certificate validation for better security
-*  Everything related to Activity
-*  Everything related to Contact Groupings
+*  Everything related to ContactGroupings
 *  Everything related to Contents
 *  Everything related to EmailAliases
 *  Everything related to EmailTemplates

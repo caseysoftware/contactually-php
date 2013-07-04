@@ -33,21 +33,6 @@ class Services_Contactually extends Services_Contactually_Resources_Base
     public $response_json = null;
 
     /**
-     * @internal I don't like having to enumerate these up front. The library
-     *    should allow the API to inform on available resources.
-     */
-    protected $resources = array(
-                    'accounts' => 'Accounts',
-                    'buckets' => 'Buckets',
-                    'contact_histories' => 'ContactHistories',
-                    'contacts' => 'Contacts',
-                    'followups' => 'Followups',
-                    'notes' => 'Notes',
-                    'tasks' => 'Tasks',
-                    'users' => 'Users'
-                );
-
-    /**
      * Authentication derived from the docs: http://developers.contactually.com/
      *   and influenced by PSR-0 and Twilio's PHP library.
      */

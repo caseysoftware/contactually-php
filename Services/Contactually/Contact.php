@@ -23,6 +23,15 @@ class Services_Contactually_Contact extends Services_Contactually_Resources_Base
     protected $_bucket_uri = 'contacts/<id>/bucket.json';
     protected $_ignore_uri = 'contacts/<id>/ignore.json';
 
+    /**
+     * This takes a contact specified by the contact_id and adds it to the bucket. Contacts can be in multiple buckets.
+     *
+     * @param type $contact_id
+     * @param type $bucket_id
+     * @return type
+     *
+     * @todo Capture invalid contact_id and bucket_id's, generates a 406 error
+     */
     public function bucket($contact_id, $bucket_id)
     {
         $this->bucket = str_replace('<id>', $contact_id, $this->_bucket_uri);
