@@ -22,7 +22,7 @@ spl_autoload_register('Services_Contactually_autoload');
  */
 class Services_Contactually extends Services_Contactually_Resources_Base
 {
-    const USER_AGENT = 'contactually-php/0.8.0';
+    const USER_AGENT = 'contactually-php/0.8.1';
 
     protected $_baseUri = 'https://www.contactually.com/api/v1/';
     protected $_successCodes = array(200 => 'OK', 201 => 'Created', 202 => 'Accepted');

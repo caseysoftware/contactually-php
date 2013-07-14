@@ -1,5 +1,6 @@
 {
     "name": "caseysoftware/contactually-helper",
+    "version": "0.8.1",
     "type": "library",
     "description": "A PHP wrapper for the Contactually API",
     "keywords": ["contactually", "crm", "api", "contact management"],
