@@ -61,6 +61,25 @@ While the functional difference between these approaches is negligible, the key-
 *  Everything related to Partners
 *  Everything related to Webhooks
 
+## Resource/subresource relation
+
+*  Accounts MAY have ContactHistories as child resources.
+*  ContactGroupings MAY have Contacts as child resources.
+*  ContactHistories MUST have an Account as a parent resource.
+*  ContactHistories MUST have a Contact as a parent resource.
+*  Contacts MAY have a Bucket as a parent resource.
+*  Content SHOULD NOT have any related resources.
+*  EmailAliases SHOULD NOT have any related resources.
+*  EmailTemplates SHOULD NOT have any related resources.
+
+
+  Followups
+  Groupings
+  Notes
+  Tasks
+  Users
+  Webhooks
+
 ## Oddities
 
 These oddities are related to the API:
