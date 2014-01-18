@@ -36,14 +36,13 @@ While the functional difference between these approaches is negligible, the key-
 
 *  ~~Implement apikey-based authentication~~
 *  Implement index (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks~~, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
-*  Implement discover (GET) for Accounts and Signup
 *  Implement show (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~, Groupings (formerly called Buckets)
 *  Implement statistics (GET) for Groupings (formerly called Buckets)
 *  ~~Implement list (GET) for Buckets~~
 *  ~~Implement search (GET) for Contacts~~
 *  ~~Implement current (GET) for Users~~
 *  Implement destroy (DELETE) for Accounts, Groupings (formerly called Buckets), ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
-*  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), ~~Notes~~, Signup, Tasks, and Webhooks
+*  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), ~~Notes~~, Tasks, and Webhooks
 *  Update the create implementation to return the Location header of the new resource: Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, ~~Notes~~, and Tasks
 *  ~~Implement complete (POST) for Tasks~~
 *  ~~Implement bucket (POST) for Contacts~~
