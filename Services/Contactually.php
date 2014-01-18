@@ -44,7 +44,7 @@ class Services_Contactually extends Services_Contactually_Resources_Base
             //do nothing, move along
             $this->_api_key = $params['api_key'];
         } elseif (isset($params['email']) && isset($params['password'])) {
-            trigger_error("The usernmae/password authentication method has been deprecated.", E_USER_NOTICE);
+            trigger_error("The username/password authentication method has been deprecated.", E_USER_NOTICE);
 
             $params["user['email']"] = $params['email'];
             $params["user['password']"] = $params['password'];
