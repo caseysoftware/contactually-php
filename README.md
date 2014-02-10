@@ -35,6 +35,7 @@ While the functional difference between these approaches is negligible, the key-
 ## TODO
 
 *  ~~Implement apikey-based authentication~~
+*  Start using SSL Certificate validation for better security
 *  Implement index (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks~~, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
 *  Implement show (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~, Groupings (formerly called Buckets)
 *  Implement statistics (GET) for Groupings (formerly called Buckets)
@@ -51,7 +52,6 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Groupings (formerly called Buckets), Tasks
 *  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search()~~, Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
-*  Start using SSL Certificate validation for better security
 *  Finish mapping out the relationships between resources (noted below so far)
 *  Everything related to ContactGroupings
 *  Everything related to Contents
@@ -61,7 +61,7 @@ While the functional difference between these approaches is negligible, the key-
 *  Everything related to Partners
 *  Everything related to Webhooks
 
-## Resource/subresource relation
+## Resource/subresource relations
 
 *  Accounts MAY have ContactHistories as child resources.
 *  ContactGroupings MAY have Contacts as child resources.
@@ -71,14 +71,6 @@ While the functional difference between these approaches is negligible, the key-
 *  Content SHOULD NOT have any related resources.
 *  EmailAliases SHOULD NOT have any related resources.
 *  EmailTemplates SHOULD NOT have any related resources.
-
-
-  Followups
-  Groupings
-  Notes
-  Tasks
-  Users
-  Webhooks
 
 ## Oddities
 
