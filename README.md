@@ -3,13 +3,12 @@ Contactually PHP Library
 
 This is a PHP helper for the Contactually API - http://developers.contactually.com/
 
-It is modeled after the Twilio PHP Helper library because I think it's generally well done and thought through. This isn't official but should generally work except for the incomplete items in the TODO list below.
+It is being modeled after the Clarify.io PHP Helper Library as that is generally well put together and predictable to use, etc.
 
-This is v0.8.0 so it is pretty stable and I don't expect the interfaces to change much if at all.
+These interfaces have radically changed since v0.8.0
 
 ## Requirements
 
-This assumes you have cURL installed along with the corresponding php-curl interface. It should be extended to support HTTP Streams but I'm kinda lazy.
 
 ## Getting started
 
