@@ -35,15 +35,14 @@ While the functional difference between these approaches is negligible, the key-
 
 *  ~~Implement apikey-based authentication~~
 *  ~~Start using SSL Certificate validation for better security~~
-*  Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
-*  Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users, Groupings (formerly called Buckets)
+*  Implement index (GET) for Accounts, Contacts, ContactHistories, Contents, CustomFields, ~~EmailAliases~~, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
+*  Implement show (GET) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailAliases, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
 *  Implement statistics (GET) for Groupings (formerly called Buckets)
-*  Implement list (GET) for Buckets
 *  Implement search (GET) for Contacts
 *  Implement current (GET) for Users
-*  Implement destroy (DELETE) for Accounts, Groupings (formerly called Buckets), Buckets, ContactHistories, Contacts, Notes, Tasks
-*  Implement create (POST) for Accounts, Buckets, Contacts, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), Notes, Tasks, and Webhooks
-*  Update the create implementation to return the Location header of the new resource: Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks
+*  Implement destroy (DELETE) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
+*  Implement create (POST) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
+*  Update the create implementation to return the Location header of the new resource: Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
 *  Implement complete (POST) for Tasks
 *  Implement bucket (POST) for Contacts
 *  Implement ignore (POST) for Contacts, Tasks
@@ -52,13 +51,6 @@ While the functional difference between these approaches is negligible, the key-
 *  Implement pagination for ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search(), Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
 *  Finish mapping out the relationships between resources (noted below so far)
-*  Everything related to ContactGroupings
-*  Everything related to Contents
-*  Everything related to EmailAliases
-*  Everything related to EmailTemplates
-*  Everything related to Groupings
-*  Everything related to Partners
-*  Everything related to Webhooks
 
 ## Resource/subresource relations
 
