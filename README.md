@@ -34,22 +34,22 @@ While the functional difference between these approaches is negligible, the key-
 ## TODO
 
 *  ~~Implement apikey-based authentication~~
-*  Start using SSL Certificate validation for better security
-*  Implement index (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks~~, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
-*  Implement show (GET) for ~~Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users~~, Groupings (formerly called Buckets)
+*  ~~Start using SSL Certificate validation for better security~~
+*  Implement index (GET) for Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, Tasks, Groupings (formerly called Buckets), EmailAliases, EmailTemplates
+*  Implement show (GET) for Accounts, Buckets, Contacts, ContactHistories, Notes, Tasks, and Users, Groupings (formerly called Buckets)
 *  Implement statistics (GET) for Groupings (formerly called Buckets)
-*  ~~Implement list (GET) for Buckets~~
-*  ~~Implement search (GET) for Contacts~~
-*  ~~Implement current (GET) for Users~~
-*  Implement destroy (DELETE) for Accounts, Groupings (formerly called Buckets), ~~Buckets, ContactHistories, Contacts, Notes, Tasks~~
-*  Implement create (POST) for Accounts, ~~Buckets~~, ~~Contacts~~, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), ~~Notes~~, Tasks, and Webhooks
-*  Update the create implementation to return the Location header of the new resource: Accounts, ~~Buckets~~, Contacts, ContactHistories, Followups, ~~Notes~~, and Tasks
-*  ~~Implement complete (POST) for Tasks~~
-*  ~~Implement bucket (POST) for Contacts~~
-*  Implement ignore (POST) for ~~Contacts~~, Tasks
+*  Implement list (GET) for Buckets
+*  Implement search (GET) for Contacts
+*  Implement current (GET) for Users
+*  Implement destroy (DELETE) for Accounts, Groupings (formerly called Buckets), Buckets, ContactHistories, Contacts, Notes, Tasks
+*  Implement create (POST) for Accounts, Buckets, Contacts, ContactGroupings, ContactHistories, Contents, Followups, Groupings (formerly called Buckets), Notes, Tasks, and Webhooks
+*  Update the create implementation to return the Location header of the new resource: Accounts, Buckets, Contacts, ContactHistories, Followups, Notes, and Tasks
+*  Implement complete (POST) for Tasks
+*  Implement bucket (POST) for Contacts
+*  Implement ignore (POST) for Contacts, Tasks
 *  Implement snooze (POST) for Contacts, Tasks
 *  Implement update (PUT) for Accounts, Buckets, Contacts, Groupings (formerly called Buckets), Tasks
-*  Implement pagination for ~~ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search()~~, Notes->search(), Tasks->search()
+*  Implement pagination for ContactHistories->index(), Contacts->index(), Tasks->index(), Contacts->search(), Notes->search(), Tasks->search()
 *  Implement error handling for all of the above
 *  Finish mapping out the relationships between resources (noted below so far)
 *  Everything related to ContactGroupings
