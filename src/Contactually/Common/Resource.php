@@ -16,7 +16,7 @@ abstract class Resource implements \Iterator
     {
         $results = $this->client->get($this->resource . '.json');
 
-        $this->data = $results[$this->resource];
+        $this->data = $results[$this->dataname];
 
         return $this;
     }
