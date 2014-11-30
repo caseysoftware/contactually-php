@@ -3,6 +3,7 @@
 namespace Contactually;
 
 use Guzzle\Http;
+use Contactually\Exceptions\InvalidResourceException;
 
 class Client
 {
@@ -55,5 +56,15 @@ class Client
     public function delete($url)
     {
 
+    }
+
+    public function __get($name)
+    {
+        switch ($name) {
+            case 'accounts':
+                return new \Contactually\Accounts($this);
+            default:
+                throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
+        }
     }
 }

@@ -5,10 +5,8 @@ include_once '../vendor/autoload.php';
 
 $client = new \Contactually\Client($apikey);
 
-$accounts = $client->get('accounts.json');
+$accounts = $client->accounts->index();
 
-$accountList = $accounts['accounts'];
-foreach($accountList as $account) {
-    echo $account['username'] . "\n";
-    echo $account['type'] . "\n";
+foreach($accounts as $account) {
+    print_r($account);
 }
