@@ -74,27 +74,13 @@ class Client
 
     public function __get($name)
     {
-        switch ($name) {
-            case 'accounts':
-                return new \Contactually\Accounts($this);
-            case 'contacts':
-                return new \Contactually\Contacts($this);
-            case 'contact_histories':
-                return new \Contactually\ContactHistories($this);
-            case 'email_aliases':
-                return new \Contactually\EmailAliases($this);
-            case 'email_templates':
-                return new \Contactually\EmailTemplates($this);
-            case 'followups':
-                return new \Contactually\Followups($this);
-            case 'groupings':
-                return new \Contactually\Groupings($this);
-            case 'notes':
-                return new \Contactually\Notes($this);
-            case 'tasks':
-                return new \Contactually\Tasks($this);
-            default:
-                throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
+        $classname = ucwords(str_replace("_", " ", $name));
+        $fullclass = "Contactually\\" . str_replace(' ', '', $classname);
+
+        if (class_exists($fullclass)) {
+            return new $fullclass($this);
+        } else {
+            throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
         }
     }
 }
