@@ -12,6 +12,8 @@ use Contactually\Exceptions\InvalidResourceException;
  * @property-read string $accounts
  * @property-read string $contacts
  * @property-read string $contact_histories
+ * @property-read string $email_aliases
+ * @property-read string $email_templates
  */
 class Client
 {
@@ -77,6 +79,8 @@ class Client
                 return new \Contactually\ContactHistories($this);
             case 'email_aliases':
                 return new \Contactually\EmailAliases($this);
+            case 'email_templates':
+                return new \Contactually\EmailTemplates($this);
             default:
                 throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
         }
