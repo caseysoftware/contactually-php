@@ -9,7 +9,7 @@ class Client
     const USER_AGENT = 'contactually-php/0.9.0';
 
     protected $baseURI  = 'https://www.contactually.com/api/v1/';
-    protected $apiKey   = '';
+    protected $apikey   = '';
     protected $client   = null;
     protected $request  = null;
 
@@ -23,13 +23,14 @@ class Client
      */
     public function __construct($apikey, $httpClient = null)
     {
-        $this->apiKey = $apikey;
+        $this->apikey = $apikey;
         $this->client = (is_null($httpClient)) ? new Http\Client($this->baseURI) : $httpClient;
         $this->client->setUserAgent($this::USER_AGENT . '/' . PHP_VERSION);
     }
 
     public function get($url, $params = array())
     {
+        $params['api_key'] = $this->apikey;
         $request = $this->client->get($url, array(), array('exceptions' => false));
         foreach($params as $key => $value) {
             $request->getQuery()->set($key, $value);
