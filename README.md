@@ -15,24 +15,19 @@ These interfaces have radically changed since v0.8.0
 
 ## Getting started
 
-You have to have a Contactually account. Then copy the creds-dist.php file to creds.php and fill in the credentials you plan to use. Then you should be able to run any of the scripts in /examples out of the box.
+You have to have a Contactually account. Then copy the creds-dist.php file to creds.php and fill in your API Key from https://www.contactually.com/settings/api Then you should be able to run any of the scripts in /examples out of the box.
 
-There are two different strategies you can use to authenticate:
-
- * You can use your existing email address and password and initialize the object like so:
+Interacting with the API resources is essentially the same across the board. The pattern is like this:
 
 ```php
-$client = new Services_Contactually(array('email' => $email, 'password' => $password));
+$client = new \Contactually\Client($apikey);
+
+$contacts = $client->contacts->index();
+
+foreach($contacts as $contact) {
+    // show contact information
+}
 ```
-
- * Alternatively, you can use the API key found here - https://www.contactually.com/settings/integrations - and initialize the object like so:
-
-```php
-$client = new Services_Contactually(array('apikey' => $apikey));
-```
-
-While the functional difference between these approaches is negligible, the key-based approach is generally considered better.
-
 
 ## TODO
 
