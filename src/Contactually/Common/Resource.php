@@ -21,6 +21,13 @@ abstract class Resource implements \Iterator
         return $this;
     }
 
+    public function show($id)
+    {
+        $results = $this->client->get($this->resource . '/' . $id . '.json');
+
+        return json_decode(json_encode($results));
+    }
+
     public function rewind()
     {
         $this->index = 0;
