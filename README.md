@@ -38,10 +38,10 @@ While the functional difference between these approaches is negligible, the key-
 
 *  ~~Implement apikey-based authentication~~
 *  ~~Start using SSL Certificate validation for better security~~
-*  Implement index (GET) for Accounts, Contacts, ContactHistories, Contents, CustomFields, ~~EmailAliases~~, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
-*  Implement show (GET) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailAliases, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
+*  Implement index (GET) for ~~Accounts, Contacts, ContactHistories,~~ Contents, CustomFields, ~~EmailAliases, EmailTemplates, Followups,~~ GroupingSets, ~~Groupings, Notes, Tasks, Users,~~ Webhooks
+*  Implement show (GET) for ~~Accounts, Contacts, ContactHistories,~~ Contents, CustomFields, ~~EmailAliases, EmailTemplates, Followups,~~ GroupingSets, ~~Groupings, Notes, Tasks, Users,~~ Webhooks
 *  Implement statistics (GET) for Groupings (formerly called Buckets)
-*  Implement search (GET) for Contacts
+*  ~~Implement search (GET) for Contacts~~
 *  Implement current (GET) for Users
 *  Implement destroy (DELETE) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
 *  Implement create (POST) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
