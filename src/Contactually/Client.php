@@ -5,6 +5,14 @@ namespace Contactually;
 use Guzzle\Http;
 use Contactually\Exceptions\InvalidResourceException;
 
+/**
+ * Class Client
+ * @package Contactually
+ *
+ * @property-read string $accounts
+ * @property-read string $contacts
+ * @property-read string $contact_histories
+ */
 class Client
 {
     const USER_AGENT = 'contactually-php/0.9.0';
