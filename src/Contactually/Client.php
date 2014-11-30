@@ -63,6 +63,8 @@ class Client
         switch ($name) {
             case 'accounts':
                 return new \Contactually\Accounts($this);
+            case 'contacts':
+                return new \Contactually\Contacts($this);
             default:
                 throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
         }
