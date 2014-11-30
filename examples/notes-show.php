@@ -1,12 +1,10 @@
 <?php
 
 include_once '../creds.php';
-include_once '../Services/Contactually.php';
+include_once '../vendor/autoload.php';
 
-$client = new Services_Contactually(array('api_key' => $apiKey));
+$client = new \Contactually\Client($apikey);
 
-$notes = new Services_Contactually_Note($client);
+$note = $client->notes->show(6611603);
 
-$result = $notes->show(12475);
-
-print_r($result);
+print_r($note);
