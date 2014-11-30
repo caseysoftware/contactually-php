@@ -1,3 +1,6 @@
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/?branch=master)
+
 Contactually PHP Library
 ================
 
