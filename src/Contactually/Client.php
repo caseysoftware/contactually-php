@@ -65,6 +65,8 @@ class Client
                 return new \Contactually\Accounts($this);
             case 'contacts':
                 return new \Contactually\Contacts($this);
+            case 'contact_histories':
+                return new \Contactually\ContactHistories($this);
             default:
                 throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
         }
