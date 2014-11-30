@@ -18,18 +18,41 @@ class Client
     public $detail   = null;
 
     /**
-     * @param $key
+     * @param $apikey
      * @param null $httpClient
      */
-    public function __construct($key, $httpClient = null)
+    public function __construct($apikey, $httpClient = null)
     {
-        $this->apiKey = $key;
+        $this->apiKey = $apikey;
         $this->client = (is_null($httpClient)) ? new Http\Client($this->baseURI) : $httpClient;
         $this->client->setUserAgent($this::USER_AGENT . '/' . PHP_VERSION);
     }
 
-    public function get() { }
-    public function put() { }
-    public function post() { }
-    public function delete() { }
+    public function get($url, $params = array())
+    {
+        $request = $this->client->get($url, array(), array('exceptions' => false));
+        foreach($params as $key => $value) {
+            $request->getQuery()->set($key, $value);
+        }
+
+        $this->response = $request->send();
+        $this->statusCode = $this->response->getStatusCode();
+
+        return $this->response->json();
+    }
+
+    public function put($url, $params = array())
+    {
+
+    }
+
+    public function post($url, $params = array())
+    {
+
+    }
+
+    public function delete($url)
+    {
+
+    }
 }
