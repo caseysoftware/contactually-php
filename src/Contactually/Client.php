@@ -70,7 +70,14 @@ class Client
 
     public function delete($uri)
     {
+        $request = $this->client->delete($uri, array(), array('exceptions' => false));
+        $request->setPostField('api_key', $this->apikey);
 
+        $this->response = $request->send();
+        $this->statusCode = $this->response->getStatusCode();
+        $this->detail = $this->response->json();
+
+        return $this->response->isSuccessful();
     }
 
     public function __get($name)

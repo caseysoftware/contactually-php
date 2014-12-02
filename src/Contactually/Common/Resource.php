@@ -28,6 +28,11 @@ abstract class Resource implements \Iterator
         return json_decode(json_encode($results));
     }
 
+    public function delete($id)
+    {
+        return $this->client->delete($this->resource . '/' . $id . '.json');
+    }
+
     public function rewind()
     {
         $this->index = 0;
