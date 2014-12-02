@@ -87,8 +87,8 @@ class Client
 
         if (class_exists($fullclass)) {
             return new $fullclass($this);
-        } else {
-            throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
         }
+
+        throw new \Contactually\Exceptions\InvalidResourceException('Not supported');
     }
 }
