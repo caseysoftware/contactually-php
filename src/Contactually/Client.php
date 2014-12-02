@@ -43,10 +43,10 @@ class Client
         $this->client->setUserAgent($this::USER_AGENT . '/' . PHP_VERSION);
     }
 
-    public function get($url, $params = array())
+    public function get($uri, $params = array())
     {
         $params['api_key'] = $this->apikey;
-        $request = $this->client->get($url, array(), array('exceptions' => false));
+        $request = $this->client->get($uri, array(), array('exceptions' => false));
         foreach($params as $key => $value) {
             $request->getQuery()->set($key, $value);
         }
@@ -58,17 +58,17 @@ class Client
         return $this->detail;
     }
 
-    public function put($url, $params = array())
+    public function put($uri, $params = array())
     {
 
     }
 
-    public function post($url, $params = array())
+    public function post($uri, $params = array())
     {
 
     }
 
-    public function delete($url)
+    public function delete($uri)
     {
 
     }
