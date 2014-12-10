@@ -15,4 +15,11 @@ class Contacts extends \Contactually\Common\Resource
 
         return parent::index($parameters);
     }
+
+    public function statistics($id)
+    {
+        $results = $this->client->get($this->resource . '/' . $id . '/statistics.json');
+
+        return json_decode(json_encode($results));
+    }
 }
