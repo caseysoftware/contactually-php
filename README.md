@@ -35,7 +35,7 @@ foreach($contacts as $contact) {
 *  ~~Start using SSL Certificate validation for better security~~
 *  Implement index (GET) for ~~Accounts, Contacts, ContactHistories,~~ Contents, CustomFields, ~~EmailAliases, EmailTemplates, Followups,~~ GroupingSets, ~~Groupings, Notes, Tasks, Users,~~ Webhooks
 *  Implement show (GET) for ~~Accounts, Contacts, ContactHistories,~~ Contents, CustomFields, ~~EmailAliases, EmailTemplates, Followups,~~ GroupingSets, ~~Groupings, Notes, Tasks, Users,~~ Webhooks
-*  Implement statistics (GET) for Groupings (formerly called Buckets)
+*  ~~Implement statistics (GET) for Groupings (formerly called Buckets)~~
 *  ~~Implement search (GET) for Contacts~~
 *  Implement current (GET) for Users
 *  Implement destroy (DELETE) for Accounts, Contacts, ContactHistories, Contents, CustomFields, EmailTemplates, Followups, GroupingSets, Groupings, Notes, Tasks, Users, Webhooks
@@ -80,7 +80,7 @@ These oddities are related to my implementation of the helper library:
  
 ### MIT License
 
-Copyright (C) 2013, Keith Casey <contrib at caseysoftware dot com>
+Copyright (C) 2014, Keith Casey <contrib at caseysoftware dot com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
