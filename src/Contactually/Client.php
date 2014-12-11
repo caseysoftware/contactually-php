@@ -43,6 +43,11 @@ class Client
         $this->client->setUserAgent($this::USER_AGENT . '/' . PHP_VERSION);
     }
 
+    /**
+     * @param $uri
+     * @param array $params
+     * @return array|bool|float|int|string
+     */
     public function get($uri, $params = array())
     {
         $params['api_key'] = $this->apikey;
@@ -68,6 +73,10 @@ class Client
 
     }
 
+    /**
+     * @param $uri
+     * @return bool
+     */
     public function delete($uri)
     {
         $request = $this->client->delete($uri, array(), array('exceptions' => false));
@@ -80,6 +89,11 @@ class Client
         return $this->response->isSuccessful();
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     * @throws Exceptions\InvalidResourceException
+     */
     public function __get($name)
     {
         $classname = ucwords(str_replace("_", " ", $name));
