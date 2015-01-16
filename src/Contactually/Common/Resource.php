@@ -21,7 +21,7 @@ abstract class Resource implements \Iterator
         return $this;
     }
 
-    public function show($id)
+    public function load($id)
     {
         $results = $this->client->get($this->resource . '/' . $id . '.json');
 

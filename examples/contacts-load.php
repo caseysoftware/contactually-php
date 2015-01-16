@@ -5,6 +5,6 @@ include_once '../vendor/autoload.php';
 
 $client = new \Contactually\Client($apikey);
 
-$account = $client->accounts->show(105747);
+$contact = $client->contacts->load(14184603);
 
-print_r($account);
+print_r($contact);

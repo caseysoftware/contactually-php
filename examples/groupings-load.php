@@ -5,6 +5,6 @@ include_once '../vendor/autoload.php';
 
 $client = new \Contactually\Client($apikey);
 
-$note = $client->notes->show(6611603);
+$grouping = $client->groupings->load(8411530);
 
-print_r($note);
+print_r($grouping);

@@ -5,6 +5,6 @@ include_once '../vendor/autoload.php';
 
 $client = new \Contactually\Client($apikey);
 
-$grouping = $client->groupings->show(8411530);
+$task = $client->tasks->load(1939234);
 
-print_r($grouping);
+print_r($task);
