@@ -2,7 +2,7 @@
 
 namespace Contactually\Resources;
 
-abstract class Resource implements \Iterator
+abstract class Base implements \Iterator
 {
     protected $index = 0;
     protected $data = array();
@@ -24,8 +24,9 @@ abstract class Resource implements \Iterator
     public function load($id)
     {
         $results = $this->client->get($this->resource . '/' . $id . '.json');
+        $this->bind($results);
 
-        return json_decode(json_encode($results));
+        return $this;
     }
 
     public function bind($hash)
