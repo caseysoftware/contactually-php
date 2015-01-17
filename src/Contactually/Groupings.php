@@ -10,8 +10,9 @@ class Groupings extends \Contactually\Resources\Base
     public function statistics($id)
     {
         $results = $this->client->get($this->resource . '/' . $id . '/statistics.json');
+        $this->bind($results);
 
-        return json_decode(json_encode($results));
+        return $this;
     }
 
     public function minimal_index()
