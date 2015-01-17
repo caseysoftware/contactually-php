@@ -2,7 +2,7 @@
 
 namespace Contactually;
 
-class Accounts extends \Contactually\Common\Resource
+class Accounts extends \Contactually\Resources\Base
 {
     protected $resource = 'accounts';
     protected $dataname = 'accounts';

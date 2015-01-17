@@ -2,7 +2,7 @@
 
 namespace Contactually;
 
-class EmailTemplates extends \Contactually\Common\Resource
+class EmailTemplates extends \Contactually\Resources\Base
 {
     protected $resource = 'email_templates';
     protected $dataname = 'email_templates';

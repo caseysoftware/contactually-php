@@ -2,7 +2,7 @@
 
 namespace Contactually;
 
-class Groupings extends \Contactually\Common\Resource
+class Groupings extends \Contactually\Resources\Base
 {
     protected $resource = 'groupings';
     protected $dataname = 'groupings';

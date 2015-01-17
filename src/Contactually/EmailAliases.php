@@ -4,7 +4,7 @@ namespace Contactually;
 
 use Contactually\Exceptions\MethodNotImplemented;
 
-class EmailAliases extends \Contactually\Common\Resource
+class EmailAliases extends \Contactually\Resources\Base
 {
     protected $resource = 'email_aliases';
     protected $dataname = 'email_aliases';
