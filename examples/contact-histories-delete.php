@@ -1,12 +1,10 @@
 <?php
 
 include_once '../creds.php';
-include_once '../Services/Contactually.php';
+include_once '../vendor/autoload.php';
 
-$client = new Services_Contactually(array('api_key' => $apiKey));
+$client = new \Contactually\Client($apikey);
 
-$contact_history = new Services_Contactually_ContactHistory($client);
+$result = $client->contact_histories->delete(81980030);
 
-$result = $contact_history->delete(81980030);
-
-print_r($result);
+echo $result;

@@ -7,4 +7,4 @@ $client = new \Contactually\Client($apikey);
 
 $result = $client->contacts->delete(136313160);
 
-echo $client->statusCode . "\n";
+echo $result;
