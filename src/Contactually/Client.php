@@ -72,6 +72,7 @@ class Client
     {
         /** @var $request \Guzzle\Http\Message\Request */
         $request = $this->client->post($uri, array(), '', array('exceptions' => false));
+        $params['api_key'] = $this->apikey;
         foreach($params as $key => $value) {
             $request->setPostField($key, $value);
         }
