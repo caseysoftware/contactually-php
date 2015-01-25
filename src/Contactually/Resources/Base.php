@@ -29,6 +29,24 @@ abstract class Base implements \Iterator
         return $this;
     }
 
+    public function create(array $params)
+    {
+//        $properties = array();
+//
+//        foreach($params as $key => $value) {
+//            $properties[$this->resource . "[$key]"] = $value;
+//        }
+//
+//        $results = $this->client->post($this->resource . '.json', $properties);
+//
+//        print_r($this->client); die();
+    }
+
+    public function update($id, $params)
+    {
+//        $results = $this->client->put($id, $params);
+    }
+
     public function bind($hash)
     {
         foreach ($hash as $key => $value) {
