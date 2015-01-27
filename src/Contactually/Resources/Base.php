@@ -31,15 +31,18 @@ abstract class Base implements \Iterator
 
     public function create(array $params)
     {
-//        $properties = array();
-//
+print_r($params);
+        $properties = array();
+
+        $properties['contacts'] = $params;
 //        foreach($params as $key => $value) {
 //            $properties[$this->resource . "[$key]"] = $value;
 //        }
-//
-//        $results = $this->client->post($this->resource . '.json', $properties);
-//
-//        print_r($this->client); die();
+print_r($properties);
+//die();
+        $results = $this->client->post($this->resource . '.json', $properties);
+
+        print_r($this->client); die();
     }
 
     public function update($id, $params)
