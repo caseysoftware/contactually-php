@@ -102,7 +102,7 @@ class Client
 
     /**
      * @param $name
-     * @return mixed
+     * @return Accounts|ContactHistories|Contacts|EmailAliases|EmailTempaltes|Followups|Groupings|Notes|Tasks
      * @throws Exceptions\InvalidResourceException
      */
     public function __get($name)
