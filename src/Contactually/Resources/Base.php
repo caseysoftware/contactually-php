@@ -33,10 +33,10 @@ abstract class Base implements \Iterator
     {
         $properties = array();
 
-        $properties['contacts'] = $params;
+        $properties[$this->postname] = $params;
         $results = $this->client->post($this->resource . '.json', $properties);
 
-        print_r($this->client); die();
+        return $results;
     }
 
     public function update($id, $params)
