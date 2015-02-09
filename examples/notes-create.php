@@ -7,7 +7,7 @@ $client = new \Contactually\Client($apikey);
 
 $params = array(
     'body' => 'This is the body of my note',
-    'contact_id' => 17471066,
+    'contact_id' => 13194473,
     );
 
 $result = $client->notes->create($params);
