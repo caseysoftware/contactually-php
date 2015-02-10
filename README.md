@@ -6,11 +6,39 @@ Contactually PHP Library
 
 This is a PHP helper for the Contactually API - http://developers.contactually.com/
 
-It is being modeled after the Clarify.io PHP Helper Library as that is generally well put together and predictable to use, etc.
+### Installing via Composer
 
-These interfaces have radically changed since v0.8.0
+The recommended way to install the Best Buy library is through [Composer](http://getcomposer.org).
 
-## Requirements
+```bash
+# Install Composer
+curl -sS https://getcomposer.org/installer | php
+
+# Add the library as a dependency
+php composer.phar require caseysoftware/contactually-php ~1.0
+```
+
+or alternatively, you can add it directly to your `composer.json` file.
+
+```json
+{
+    "require": {
+        "caseysoftware/contactually-php": "~1.0"
+    }
+}
+```
+
+Then install via Composer:
+
+```bash
+composer install
+```
+
+Finally, require Composer's autoloader in your PHP script:
+
+```php
+require __DIR__.'/vendor/autoload.php';
+```
 
 
 ## Getting started
