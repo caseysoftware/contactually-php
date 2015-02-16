@@ -65,7 +65,17 @@ class Client
 
     public function put($uri, $params = array())
     {
+        $request = $this->client->put($uri, array(), '', array('exceptions' => false));
+        $params['api_key'] = $this->apikey;
+        foreach($params as $key => $value) {
+            $request->setPostField($key, $value);
+        }
 
+        $this->response = $request->send();
+        $this->statusCode = $this->response->getStatusCode();
+        $this->detail = $this->response->json();
+
+        return $this->response->isSuccessful();
     }
 
     public function post($uri, $params = array())
