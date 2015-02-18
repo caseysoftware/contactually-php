@@ -46,45 +46,45 @@ class Client
     /**
      * @param $uri
      * @param array $params
-     * @return array|bool|float|int|string
+     * @return null
      */
     public function get($uri, $params = array())
     {
         $request = $this->client->get($uri, array(), array('exceptions' => false));
-
-        $params['api_key'] = $this->apikey;
         $request = $this->addFields($request, $params);
 
-        $this->response = $request->send();
-        $this->statusCode = $this->response->getStatusCode();
-        $this->detail = $this->response->json();
+        $this->processRequest($request);
 
         return $this->detail;
     }
 
+    /**
+     * @param $uri
+     * @param array $params
+     * @return mixed
+     */
     public function put($uri, $params = array())
     {
         $request = $this->client->put($uri, array(), '', array('exceptions' => false));
-        $params['api_key'] = $this->apikey;
         $request = $this->addFields($request, $params);
 
-        $this->response = $request->send();
-        $this->statusCode = $this->response->getStatusCode();
-        $this->detail = $this->response->json();
+        $this->processRequest($request);
 
         return $this->response->isSuccessful();
     }
 
+    /**
+     * @param $uri
+     * @param array $params
+     * @return mixed
+     */
     public function post($uri, $params = array())
     {
         /** @var $request \Guzzle\Http\Message\Request */
         $request = $this->client->post($uri, array(), '', array('exceptions' => false));
-        $params['api_key'] = $this->apikey;
         $request = $this->addFields($request, $params);
 
-        $this->response = $request->send();
-        $this->statusCode = $this->response->getStatusCode();
-        $this->detail = $this->response->json();
+        $this->processRequest($request);
 
         return $this->response->isSuccessful();
     }
@@ -96,17 +96,23 @@ class Client
     public function delete($uri)
     {
         $request = $this->client->delete($uri, array(), array('exceptions' => false));
-        $request->setPostField('api_key', $this->apikey);
+        $request = $this->addFields($request);
 
-        $this->response = $request->send();
-        $this->statusCode = $this->response->getStatusCode();
-        $this->detail = $this->response->json();
+        $this->processRequest($request);
 
         return $this->response->isSuccessful();
     }
 
-    protected function addFields($request, array $params)
+    protected function processRequest($request)
     {
+        $this->response = $request->send();
+        $this->statusCode = $this->response->getStatusCode();
+        $this->detail = $this->response->json();
+    }
+
+    protected function addFields($request, $params = array())
+    {
+        $params['api_key'] = $this->apikey;
         foreach($params as $key => $value) {
             $request->getQuery()->set($key, $value);
         }
