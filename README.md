@@ -1,5 +1,5 @@
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/caseysoftware/contactually-php/?branch=master) [![Code Climate](https://codeclimate.com/github/caseysoftware/contactually-php/badges/gpa.svg)](https://codeclimate.com/github/caseysoftware/contactually-php)
 
 Contactually PHP Library
 ================
