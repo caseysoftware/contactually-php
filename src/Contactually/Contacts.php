@@ -12,9 +12,12 @@ class Contacts extends \Contactually\Resources\Base
     {
         $parameters['term'] = $term;
 
-        $this->resource = 'contacts/search';
+        $results = $this->client->get($this->resource . '/search.json', $parameters);
 
-        return parent::index($parameters);
+        $this->data = $results[$this->dataname];
+        $this->count = $results['count'];
+
+        return $this;
     }
 
     public function statistics($id)
