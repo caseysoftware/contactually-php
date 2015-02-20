@@ -7,6 +7,6 @@ $client = new \Contactually\Client($apikey);
 
 $contact = $client->contacts->load(153074584);
 
-$result = $contact->bucket(14601805);
+$result = $contact->unbucket(14601805);
 
 echo $result;
