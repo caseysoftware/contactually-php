@@ -46,7 +46,7 @@ class Contacts extends \Contactually\Resources\Base
 
     public function tag(array $tags)
     {
-        $parameters['tags'] = implode(',', $tags);
+        $parameters = array('tags' => implode(',', $tags));
 
         $results = $this->client->post($this->resource . '/' . $this->id . '/tags.json', $parameters);
 
