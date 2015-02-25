@@ -52,4 +52,22 @@ class Contacts extends \Contactually\Resources\Base
 
         return $results;
     }
+
+    public function ignore($temporary = false, $task_id = 0)
+    {
+        $parameters = array('temp' => $temporary, 'task_id' => $task_id);
+
+        $results = $this->client->post($this->resource . '/' . $this->id . '/ignore.json', $parameters);
+
+        return $results;
+    }
+
+    public function snooze($days = 7, $task_id = 0)
+    {
+        $parameters = array('days' => $days, 'task_id' => $task_id);
+
+        $results = $this->client->post($this->resource . '/' . $this->id . '/snooze.json', $parameters);
+
+        return $results;
+    }
 }
