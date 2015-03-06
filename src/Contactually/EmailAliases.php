@@ -11,11 +11,11 @@ class EmailAliases extends \Contactually\Resources\Base
 
     public function show($id)
     {
-        throw new \Contactually\Exceptions\MethodNotImplemented;
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
     }
 
     public function delete($id)
     {
-        throw new \Contactually\Exceptions\MethodNotImplemented;
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
     }
 }
