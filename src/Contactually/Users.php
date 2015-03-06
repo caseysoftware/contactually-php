@@ -13,4 +13,29 @@ class Users extends \Contactually\Resources\Base
 
         return $this;
     }
+
+    public function show($id)
+    {
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
+    }
+
+    public function delete($id)
+    {
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
+    }
+
+    public function index($parameters = array())
+    {
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
+    }
+
+    public function create(array $params)
+    {
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
+    }
+
+    public function update($id, $params)
+    {
+        throw new \Contactually\Exceptions\MethodNotImplemented('This method cannot be applied to this object.');
+    }
 }
