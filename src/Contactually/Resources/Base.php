@@ -52,7 +52,7 @@ abstract class Base implements \Iterator
         return $results;
     }
 
-    public function bind($hash)
+    protected function bind($hash)
     {
         foreach ($hash as $key => $value) {
             $this->$key = $value;
