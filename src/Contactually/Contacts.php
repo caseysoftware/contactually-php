@@ -52,4 +52,19 @@ class Contacts extends \Contactually\Resources\Base
 
         return $results;
     }
+
+    /**
+     * @todo
+     */
+    public function create_multiple() { }
+
+    /**
+     * @todo
+     */
+    public function merge() { }
+
+    /**
+     * @todo
+     */
+    public function snooze() { }
 }
