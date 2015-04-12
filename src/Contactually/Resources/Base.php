@@ -19,6 +19,7 @@ abstract class Base implements \Iterator
 
         $this->data = $results[$this->dataname];
         $this->count = $results['count'];
+        $this->total_count = $results['total_count'];
 
         return $this;
     }
