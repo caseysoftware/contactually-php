@@ -8,7 +8,7 @@ This is a PHP helper for the Contactually API - http://developers.contactually.c
 
 ### Installing via Composer
 
-The recommended way to install the Best Buy library is through [Composer](http://getcomposer.org).
+The recommended way to install the Contactually library is through [Composer](http://getcomposer.org).
 
 ```bash
 # Install Composer
