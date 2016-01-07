@@ -21,7 +21,7 @@ use Contactually\Exceptions\InvalidResourceException;
  */
 class Client
 {
-    const USER_AGENT = 'contactually-php/1.1.1';
+    const USER_AGENT = 'contactually-php/1.1.2';
 
     protected $baseURI  = 'https://www.contactually.com/api/v1/';
     protected $apikey   = '';
