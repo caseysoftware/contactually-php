@@ -15,7 +15,7 @@ The recommended way to install the Contactually library is through [Composer](ht
 curl -sS https://getcomposer.org/installer | php
 
 # Add the library as a dependency
-php composer.phar require caseysoftware/contactually-php ~1.1
+php composer.phar require caseysoftware/contactually-helper ~1.1
 ```
 
 or alternatively, you can add it directly to your `composer.json` file.
@@ -23,7 +23,7 @@ or alternatively, you can add it directly to your `composer.json` file.
 ```json
 {
     "require": {
-        "caseysoftware/contactually-php": "~1.1"
+        "caseysoftware/contactually-helper": "~1.1"
     }
 }
 ```
